@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# WebAI 项目开发规则
+
+## 项目概述
+这是一个基于 Nuxt.js 3 的现代化 AI 平台项目，支持多语言、多主题的用户认证系统。
+
+## 技术栈
+- **前端框架**: Nuxt.js 3.17.4 + Vue 3 Composition API
+- **样式**: Tailwind CSS + 自定义主题系统
+- **数据库**: PostgreSQL + Prisma ORM
+- **认证**: JWT + Cookie 存储
+- **国际化**: @nuxtjs/i18n (中英文)
+- **图标**: @heroicons/vue + @iconify/vue
+- **API文档**: Swagger/OpenAPI 3.0
+
+## 核心功能
+1. **用户认证系统** - [server/api/auth/](mdc:server/api/auth)
+2. **多主题切换** - [components/ThemeSelector.vue](mdc:components/ThemeSelector.vue)
+3. **国际化支持** - [locale/](mdc:locale)
+4. **API文档系统** - [pages/api-docs.vue](mdc:pages/api-docs.vue)
+5. **数据库管理** - [prisma/](mdc:prisma)
+
+## 文件结构
+```
+offical-template/
+├── components/          # Vue组件
+├── composables/         # 组合式函数
+├── pages/              # 页面路由
+├── server/api/         # API端点
+├── prisma/             # 数据库模型
+├── locale/             # 国际化文件
+├── public/             # 静态资源
+└── nuxt.config.ts      # Nuxt配置
+```
+
+## 开发原则
+- 使用中文与用户交流
+- 不私自新增独立模块
+- 保持代码简洁高效
+- 遵循项目现有架构

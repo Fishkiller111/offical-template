@@ -2,7 +2,24 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n'],
+  i18n: {
+    locales: [
+      { 
+        code: 'zh', 
+        name: '中文', 
+        flag: '🇨🇳' 
+      },
+      { 
+        code: 'en', 
+        name: 'English', 
+        flag: '🇺🇸' 
+      }
+    ],
+    defaultLocale: 'zh',
+    strategy: 'no_prefix',
+    vueI18n: 'i18n.config.ts'
+  },
   app: {
     head: {
       title: 'WebAI - AI Development Solutions',

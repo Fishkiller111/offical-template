@@ -1,0 +1,89 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# API文档系统开发规则
+
+## Swagger集成架构
+项目集成完整的Swagger/OpenAPI 3.0文档系统，提供交互式API文档。
+
+## 核心文件
+- **Swagger配置**: [server/utils/swagger.ts](mdc:server/utils/swagger.ts)
+- **API文档页面**: [pages/api-docs.vue](mdc:pages/api-docs.vue)
+- **文档端点**: [server/api/docs.get.ts](mdc:server/api/docs.get.ts)
+- **认证API**: [server/api/auth/](mdc:server/api/auth)
+
+## Swagger配置规范
+### OpenAPI规范
+```yaml
+openapi: 3.0.0
+info:
+  title: WebAI API 文档
+  version: 1.0.0
+  description: 这是项目的API接口文档
+```
+
+### 数据模型定义
+- **User**: 用户信息模型
+- **LoginRequest**: 登录请求
+- **RegisterRequest**: 注册请求
+- **AuthResponse**: 认证响应
+- **ErrorResponse**: 错误响应
+
+### 安全认证
+```yaml
+securitySchemes:
+  bearerAuth:
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+```
+
+## API注释规范
+### JSDoc格式
+```javascript
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: 用户登录
+ *     tags: [认证]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/LoginRequest'
+ *     responses:
+ *       200:
+ *         description: 登录成功
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/AuthResponse'
+ */
+```
+
+## 已实现的API端点
+1. **POST /api/auth/register** - 用户注册
+2. **POST /api/auth/login** - 用户登录  
+3. **GET /api/auth/me** - 获取用户信息
+4. **GET /api/docs** - 获取Swagger JSON
+
+## UI集成特性
+- **主题适配**: 与项目主题系统完全集成
+- **国际化**: 支持中英文文档描述
+- **响应式**: 适配移动端和桌面端
+- **导航**: 集成项目导航和面包屑
+
+## 开发规范
+- 所有新API必须添加Swagger注释
+- 使用中文描述API功能
+- 定义完整的请求/响应模型
+- 包含适当的错误代码和描述
+- 遵循RESTful API设计原则
+
+## 访问路径
+- **文档界面**: `/api-docs`
+- **JSON规范**: `/api/docs`

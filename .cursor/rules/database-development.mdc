@@ -1,0 +1,118 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 数据库开发规则
+
+## 数据库架构
+项目使用PostgreSQL + Prisma ORM进行数据库管理。
+
+## 核心文件
+- **数据库模型**: [prisma/schema.prisma](mdc:prisma/schema.prisma)
+- **数据库设置说明**: [DATABASE_SETUP.md](mdc:DATABASE_SETUP.md)
+- **环境配置**: [.env](mdc:.env)
+
+## Prisma配置
+### 数据库连接
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+### 用户模型
+```prisma
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+```
+
+## 环境变量
+```env
+DATABASE_URL="postgresql://username:password@localhost:5432/database_name"
+JWT_SECRET="your-super-secret-jwt-key"
+```
+
+## Prisma客户端使用
+### 标准导入语法
+```javascript
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+```
+
+### 查询示例
+```javascript
+// 创建用户
+const user = await prisma.user.create({
+  data: {
+    email: 'user@example.com',
+    password: hashedPassword,
+    name: 'User Name'
+  }
+})
+
+// 查找用户
+const user = await prisma.user.findUnique({
+  where: { email: 'user@example.com' }
+})
+```
+
+## 数据库命令
+### 开发环境
+```bash
+# 推送模型变更到数据库
+npx prisma db push
+
+# 生成Prisma客户端
+npx prisma generate
+
+# 查看数据库内容
+npx prisma studio
+```
+
+### 生产环境
+```bash
+# 创建并应用迁移
+npx prisma migrate deploy
+
+# 重置数据库（谨慎使用）
+npx prisma migrate reset
+```
+
+## 开发规范
+- 使用标准ES6导入语法，避免动态导入
+- 所有数据库操作必须进行错误处理
+- 模型变更后及时运行`prisma generate`
+- 生产环境使用migrate而非db push
+- 敏感信息使用环境变量
+
+## 常见问题解决
+### Prisma客户端导入错误
+- 确保使用`import { PrismaClient }`而非动态导入
+- 运行`npx prisma generate`重新生成客户端
+- 检查`node_modules/.prisma`目录是否存在
+
+### 数据库连接问题
+- 验证DATABASE_URL格式正确
+- 确保PostgreSQL服务正在运行
+- 检查数据库用户权限
+
+## 数据安全
+- 密码必须使用bcrypt哈希存储
+- 实现适当的数据验证
+- 使用Prisma的类型安全查询
+- 定期备份生产数据库

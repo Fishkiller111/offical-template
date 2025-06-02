@@ -1,20 +1,29 @@
 import type { Config } from 'tailwindcss'
 
-export default {
-  content: [],
+export default <Config>{
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
+    "./app.vue"
+  ],
   theme: {
     extend: {
       colors: {
-        primary: '#8B5CF6',
-        'primary-dark': '#7C3AED',
+        primary: {
+          DEFAULT: 'var(--color-primary, #8B5CF6)',
+          dark: 'var(--color-primary-dark, #7C3AED)'
+        },
         dark: {
-          DEFAULT: '#0B1120',
-          light: '#1E293B',
-          lighter: '#334155'
+          DEFAULT: 'var(--bg-dark, #0F172A)',
+          light: 'var(--bg-dark-light, #1E293B)',
+          lighter: 'var(--bg-dark-lighter, #334155)'
         },
         light: {
-          DEFAULT: '#F8FAFC',
-          dark: '#E2E8F0'
+          DEFAULT: 'var(--text-light, #F8FAFC)',
+          dark: 'var(--text-light-dark, #94A3B8)'
         }
       },
       fontFamily: {
@@ -31,4 +40,4 @@ export default {
     }
   },
   plugins: []
-} satisfies Config
+}

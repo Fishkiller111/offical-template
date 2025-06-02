@@ -1,0 +1,67 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 主题系统开发规则
+
+## 主题架构
+项目使用自定义主题系统，支持亮暗模式切换和6种主题颜色。
+
+## 核心组件
+- **主题选择器**: [components/ThemeSelector.vue](mdc:components/ThemeSelector.vue)
+- **语言切换器**: [components/LanguageSwitcher.vue](mdc:components/LanguageSwitcher.vue)
+- **主配置**: [tailwind.config.ts](mdc:tailwind.config.ts)
+
+## 主题系统原理
+### 亮暗模式切换
+- **默认模式**: 暗色模式
+- **切换机制**: 在`<html>`元素添加/移除`light-mode`类
+- **本地存储**: `localStorage.getItem('dark-mode')`
+
+### CSS变量定义
+```css
+:root {
+  --bg-dark: #0F172A;
+  --bg-dark-light: #1E293B;
+  --bg-dark-lighter: #334155;
+  --text-light: #F8FAFC;
+  --text-light-dark: #94A3B8;
+}
+
+:root.light-mode {
+  --bg-dark: #FFFFFF;
+  --bg-dark-light: #F8FAFC;
+  --bg-dark-lighter: #E2E8F0;
+  --text-light: #1E293B;
+  --text-light-dark: #64748B;
+}
+```
+
+## 主题颜色系统
+### 可用主题
+1. 紫色 (#8B5CF6) - 默认
+2. 蓝色 (#3B82F6)
+3. 绿色 (#10B981)
+4. 红色 (#EF4444)
+5. 橙色 (#F97316)
+6. 粉色 (#EC4899)
+
+### 主题切换实现
+- 动态设置CSS变量`--color-primary`
+- 自动生成深色变体`--color-primary-dark`
+- 本地存储: `localStorage.getItem('theme-color')`
+
+## 样式类规范
+使用项目自定义类而非Tailwind的`dark:`前缀：
+- `bg-dark` → 主背景色
+- `bg-dark-light` → 浅色背景
+- `bg-dark-lighter` → 更浅背景/边框
+- `text-light` → 主文字色
+- `text-light-dark` → 辅助文字色
+
+## 开发注意事项
+- 新页面必须使用项目主题系统
+- 避免使用Tailwind的`dark:`类
+- 确保主题切换时正确更新所有组件
+- 监听`MutationObserver`来响应主题变化

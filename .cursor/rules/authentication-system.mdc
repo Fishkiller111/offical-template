@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 认证系统开发规则
+
+## 认证架构
+项目使用基于JWT的认证系统，包含完整的注册、登录、用户管理功能。
+
+## 核心文件
+- **认证页面**: [pages/auth.vue](mdc:pages/auth.vue)
+- **认证组合函数**: [composables/useAuth.js](mdc:composables/useAuth.js)
+- **API端点**:
+  - 注册: [server/api/auth/register.post.js](mdc:server/api/auth/register.post.js)
+  - 登录: [server/api/auth/login.post.js](mdc:server/api/auth/login.post.js)
+  - 用户信息: [server/api/auth/me.get.js](mdc:server/api/auth/me.get.js)
+- **数据库模型**: [prisma/schema.prisma](mdc:prisma/schema.prisma)
+
+## 认证流程
+1. **注册**: 用户提供姓名、邮箱、密码
+2. **密码加密**: 使用bcrypt进行密码哈希
+3. **JWT生成**: 登录成功后生成JWT令牌
+4. **Cookie存储**: 令牌存储在httpOnly cookie中
+5. **状态管理**: 通过composables管理认证状态
+
+## API 规范
+所有认证API已集成Swagger文档：
+- 完整的请求/响应规范
+- 错误代码定义
+- 中文API描述
+- JWT Bearer认证支持
+
+## 数据模型
+```prisma
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
+
+## 开发注意事项
+- 使用标准ES6导入语法
+- 避免动态导入Prisma客户端
+- 确保JWT密钥安全配置
+- 实现适当的错误处理
