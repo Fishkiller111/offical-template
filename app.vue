@@ -14,7 +14,7 @@
           <a href="#" class="text-light-dark hover:text-primary transition-colors">Price</a>
         </div>
         <div class="hidden lg:block">
-          <button class="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-primary-dark transition duration-300">
+          <button class="bg-primary text-white px-6 py-2.5 rounded-xl hover:bg-primary-dark transition duration-300">
             Try WebAI Free
           </button>
         </div>
@@ -41,12 +41,38 @@
             Transform your content creation with AI-powered solutions. Generate high-quality content in seconds.
           </p>
           <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-fade-up animation-delay-400">
-            <button class="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-dark transition duration-300">
+            <button class="bg-primary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-dark transition duration-300">
               Try WebAI Free
             </button>
-            <button class="bg-dark-light text-light border border-dark-lighter px-8 py-4 rounded-lg text-lg font-semibold hover:bg-dark-lighter transition duration-300">
+            <button class="bg-dark-light text-light border border-dark-lighter px-8 py-4 rounded-xl text-lg font-semibold hover:bg-dark-lighter transition duration-300">
               View Demo
             </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-16 bg-dark-light/50 overflow-hidden scroll-reveal">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl font-bold mb-4">Trusted by Leading Companies</h2>
+          <p class="text-light-dark">Join thousands of companies already using our AI solutions</p>
+        </div>
+        <div class="flex space-x-8 animate-scroll">
+          <div class="flex space-x-8 animate-scroll-duplicate">
+            <img src="https://via.placeholder.com/120x40" alt="Partner 1" class="h-8 object-contain"/>
+            <img src="https://via.placeholder.com/120x40" alt="Partner 2" class="h-8 object-contain"/>
+            <img src="https://via.placeholder.com/120x40" alt="Partner 3" class="h-8 object-contain"/>
+            <img src="https://via.placeholder.com/120x40" alt="Partner 4" class="h-8 object-contain"/>
+            <img src="https://via.placeholder.com/120x40" alt="Partner 5" class="h-8 object-contain"/>
+          </div>
+          <div class="flex space-x-8 animate-scroll-duplicate">
+            <img src="https://via.placeholder.com/120x40" alt="Partner 1" class="h-8 object-contain"/>
+            <img src="https://via.placeholder.com/120x40" alt="Partner 2" class="h-8 object-contain"/>
+            <img src="https://via.placeholder.com/120x40" alt="Partner 3" class="h-8 object-contain"/>
+            <img src="https://via.placeholder.com/120x40" alt="Partner 4" class="h-8 object-contain"/>
+            <img src="https://via.placeholder.com/120x40" alt="Partner 5" class="h-8 object-contain"/>
           </div>
         </div>
       </div>
@@ -64,7 +90,7 @@
           <div v-for="(feature, index) in features" :key="feature.title" 
                class="bg-dark-light p-8 rounded-xl border border-dark-lighter hover:border-primary transition-all duration-300 scroll-reveal"
                :style="{ animationDelay: `${index * 100}ms` }">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
               <span class="text-2xl">{{ feature.icon }}</span>
             </div>
             <h3 class="text-xl font-semibold mb-4">{{ feature.title }}</h3>
@@ -97,66 +123,26 @@
       </div>
     </section>
 
-    <!-- Company Logos Section -->
-    <section class="py-16 bg-dark scroll-reveal">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-4">Trusted by Leading Companies</h2>
-          <p class="text-light-dark">Join thousands of satisfied customers who trust WebAI</p>
-        </div>
-        <div class="flex overflow-hidden">
-          <div class="flex animate-scroll-x">
-            <div v-for="(logo, index) in companyLogos" :key="index" 
-                 class="mx-8 grayscale hover:grayscale-0 transition-all duration-300">
-              <img :src="logo" alt="Company Logo" class="h-12" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Trending Topics Section -->
-    <section class="py-24 bg-dark-light scroll-reveal">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">Trending Topics</h2>
-          <p class="text-light-dark">Explore the most popular AI content generation topics</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="(topic, index) in trendingTopics" :key="topic.title"
-               class="bg-dark p-8 rounded-xl border border-dark-lighter hover:border-primary transition-all duration-300 scroll-reveal"
-               :style="{ animationDelay: `${index * 100}ms` }">
-            <h3 class="text-xl font-semibold mb-4">{{ topic.title }}</h3>
-            <p class="text-light-dark mb-6">{{ topic.description }}</p>
-            <div class="flex -space-x-2">
-              <img v-for="avatar in topic.avatars" :key="avatar" 
-                   :src="avatar" 
-                   class="w-8 h-8 rounded-full border-2 border-dark" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
     <section class="py-24 bg-dark scroll-reveal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">What Our Users Say</h2>
-          <p class="text-light-dark">Hear from our satisfied customers</p>
+          <h2 class="text-3xl font-bold mb-4">Trending Topics</h2>
+          <p class="text-light-dark">Discover what others are creating with WebAI</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div v-for="(testimonial, index) in testimonials" :key="testimonial.name"
-               class="bg-dark-light p-8 rounded-xl border border-dark-lighter scroll-reveal"
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div v-for="(topic, index) in trendingTopics" :key="topic.title"
+               class="bg-dark-light p-6 rounded-xl border border-dark-lighter hover:border-primary transition-all duration-300 scroll-reveal"
                :style="{ animationDelay: `${index * 100}ms` }">
-            <div class="flex items-center mb-6">
-              <img :src="testimonial.avatar" alt="User" class="w-12 h-12 rounded-full" />
-              <div class="ml-4">
-                <h4 class="font-semibold">{{ testimonial.name }}</h4>
-                <p class="text-light-dark text-sm">{{ testimonial.role }}</p>
+            <h3 class="text-lg font-semibold mb-4">{{ topic.title }}</h3>
+            <p class="text-light-dark mb-6">{{ topic.description }}</p>
+            <div class="flex items-center space-x-2">
+              <div v-for="avatar in topic.avatars" :key="avatar" class="w-8 h-8 rounded-xl overflow-hidden -ml-2 first:ml-0 border-2 border-dark">
+                <img :src="avatar" alt="User" class="w-full h-full object-cover" />
               </div>
+              <span class="text-light-dark text-sm ml-2">+{{ topic.additionalUsers }} users</span>
             </div>
-            <p class="text-light-dark">{{ testimonial.content }}</p>
           </div>
         </div>
       </div>
@@ -167,20 +153,20 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p class="text-light-dark">Get answers to common questions about WebAI</p>
+          <p class="text-light-dark">Everything you need to know about WebAI</p>
         </div>
+
         <div class="max-w-3xl mx-auto">
-          <div v-for="(faq, index) in faqs" :key="index"
-               class="mb-6 scroll-reveal"
-               :style="{ animationDelay: `${index * 100}ms` }">
-            <button @click="faq.isOpen = !faq.isOpen"
-                    class="w-full text-left p-6 bg-dark rounded-lg flex justify-between items-center hover:bg-dark-lighter transition-colors">
+          <div v-for="(faq, index) in faqs" :key="index" class="mb-4">
+            <button 
+              @click="faq.isOpen = !faq.isOpen"
+              class="w-full text-left p-6 bg-dark rounded-xl flex justify-between items-center hover:bg-dark-lighter transition-colors"
+            >
               <span class="font-semibold">{{ faq.question }}</span>
-              <span class="transform transition-transform" :class="{ 'rotate-180': faq.isOpen }">▼</span>
+              <span class="transform transition-transform" :class="{ 'rotate-180': faq.isOpen }">↓</span>
             </button>
-            <div v-show="faq.isOpen" 
-                 class="p-6 text-light-dark bg-dark-light mt-2 rounded-lg transition-all">
-              {{ faq.answer }}
+            <div v-show="faq.isOpen" class="p-6 bg-dark-light mt-2 rounded-xl">
+              <p class="text-light-dark">{{ faq.answer }}</p>
             </div>
           </div>
         </div>
@@ -210,7 +196,7 @@
                 <span>{{ feature }}</span>
               </li>
             </ul>
-            <button class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition duration-300">
+            <button class="w-full bg-primary text-white py-3 rounded-xl hover:bg-primary-dark transition duration-300">
               Try {{ plan.name }}
             </button>
           </div>
@@ -312,6 +298,57 @@ const tools = [
   }
 ]
 
+const trendingTopics = [
+  {
+    title: 'AI Content Generation',
+    description: 'Explore the latest trends in AI-powered content creation.',
+    avatars: [
+      'https://i.pravatar.cc/150?img=1',
+      'https://i.pravatar.cc/150?img=2',
+      'https://i.pravatar.cc/150?img=3'
+    ],
+    additionalUsers: 128
+  },
+  {
+    title: 'Marketing Copy',
+    description: 'Learn how AI is transforming marketing content creation.',
+    avatars: [
+      'https://i.pravatar.cc/150?img=4',
+      'https://i.pravatar.cc/150?img=5'
+    ],
+    additionalUsers: 89
+  },
+  {
+    title: 'SEO Optimization',
+    description: 'Discover AI-powered SEO techniques and strategies.',
+    avatars: [
+      'https://i.pravatar.cc/150?img=6',
+      'https://i.pravatar.cc/150?img=7',
+      'https://i.pravatar.cc/150?img=8',
+      'https://i.pravatar.cc/150?img=9'
+    ],
+    additionalUsers: 256
+  }
+]
+
+const faqs = ref([
+  {
+    question: 'How does WebAI generate content?',
+    answer: 'WebAI uses advanced machine learning algorithms and natural language processing to generate high-quality content based on your input and requirements.',
+    isOpen: false
+  },
+  {
+    question: 'What type of content can WebAI create?',
+    answer: 'WebAI can create various types of content including blog posts, social media posts, marketing copy, product descriptions, and more.',
+    isOpen: false
+  },
+  {
+    question: 'Is the content generated by WebAI unique?',
+    answer: 'Yes, all content generated by WebAI is unique and original. Our AI models are trained to create fresh content while maintaining natural language patterns.',
+    isOpen: false
+  }
+])
+
 const plans = [
   {
     name: 'Free',
@@ -354,84 +391,6 @@ const plans = [
     ]
   }
 ]
-
-const companyLogos = [
-  'https://via.placeholder.com/150x50?text=Logo1',
-  'https://via.placeholder.com/150x50?text=Logo2',
-  'https://via.placeholder.com/150x50?text=Logo3',
-  'https://via.placeholder.com/150x50?text=Logo4',
-  'https://via.placeholder.com/150x50?text=Logo5',
-  'https://via.placeholder.com/150x50?text=Logo6',
-]
-
-const trendingTopics = [
-  {
-    title: 'Blog Content',
-    description: 'Generate engaging blog posts with AI assistance',
-    avatars: [
-      'https://i.pravatar.cc/150?img=1',
-      'https://i.pravatar.cc/150?img=2',
-      'https://i.pravatar.cc/150?img=3',
-    ]
-  },
-  {
-    title: 'Social Media',
-    description: 'Create viral social media content instantly',
-    avatars: [
-      'https://i.pravatar.cc/150?img=4',
-      'https://i.pravatar.cc/150?img=5',
-    ]
-  },
-  {
-    title: 'SEO Content',
-    description: 'Generate SEO-optimized content that ranks',
-    avatars: [
-      'https://i.pravatar.cc/150?img=6',
-      'https://i.pravatar.cc/150?img=7',
-      'https://i.pravatar.cc/150?img=8',
-      'https://i.pravatar.cc/150?img=9',
-    ]
-  }
-]
-
-const testimonials = [
-  {
-    name: 'Sarah Johnson',
-    role: 'Content Manager',
-    avatar: 'https://i.pravatar.cc/150?img=1',
-    content: 'WebAI has transformed our content creation process. The quality and speed are unmatched.'
-  },
-  {
-    name: 'Michael Chen',
-    role: 'Marketing Director',
-    avatar: 'https://i.pravatar.cc/150?img=2',
-    content: 'The AI-powered tools have helped us scale our content strategy effectively.'
-  },
-  {
-    name: 'Emma Davis',
-    role: 'Freelance Writer',
-    avatar: 'https://i.pravatar.cc/150?img=3',
-    content: 'As a writer, WebAI helps me overcome writer\'s block and create better content faster.'
-  }
-]
-
-const faqs = ref([
-  {
-    question: 'How does WebAI generate content?',
-    answer: 'WebAI uses advanced machine learning algorithms to analyze your input and generate high-quality content that matches your requirements.',
-    isOpen: false
-  },
-  {
-    question: 'What type of content can I create?',
-    answer: 'You can create various types of content including blog posts, social media updates, product descriptions, and more.',
-    isOpen: false
-  },
-  {
-    question: 'Is the content unique and original?',
-    answer: 'Yes, all content generated by WebAI is unique and passes plagiarism checks.',
-    isOpen: false
-  }
-])
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -491,21 +450,20 @@ body {
   }
 }
 
-@keyframes scroll-x {
-  0% {
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+.animate-scroll-duplicate {
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translateX(-100%);
   }
-}
-
-.animate-scroll-x {
-  animation: scroll-x 20s linear infinite;
-  min-width: 100%;
-}
-
-.animate-scroll-x:hover {
-  animation-play-state: paused;
 }
 </style>

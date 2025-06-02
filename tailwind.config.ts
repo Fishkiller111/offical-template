@@ -23,6 +23,10 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'hero-pattern': 'linear-gradient(to bottom, rgba(11, 17, 32, 0.9), rgba(11, 17, 32, 1)), url("/images/hero-bg.jpg")'
+      },
+      borderRadius: {
+        'lg': '1rem',
+        'xl': '1.5rem'
       }
     }
   },
