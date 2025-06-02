@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen bg-dark">
     <!-- 导航栏 -->
-    <header class="bg-dark-light/50 backdrop-blur-lg border-b border-dark-lighter">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header class="navbar-default">
+      <nav class="container-default h-16 flex items-center justify-between">
         <div class="flex items-center">
           <NuxtLink to="/" class="text-2xl font-bold text-light">
             WebAI
@@ -18,15 +18,15 @@
 
     <div class="container mx-auto px-4 py-8">
       <div class="mb-8">
-        <h1 class="text-4xl font-bold text-light mb-4">
+        <h1 class="text-heading-1 text-light mb-4">
           {{ $t('apiDocs.title') }}
         </h1>
-        <p class="text-lg text-light-dark">
+        <p class="text-body">
           {{ $t('apiDocs.description') }}
         </p>
       </div>
       
-      <div class="bg-dark-light rounded-lg shadow-lg overflow-hidden border border-dark-lighter">
+      <div class="card-default shadow-lg overflow-hidden">
         <div id="swagger-ui" ref="swaggerContainer"></div>
       </div>
     </div>
@@ -113,99 +113,5 @@ onMounted(async () => {
 </script>
 
 <style>
-/* 应用项目的主题系统 */
-:root {
-  --bg-dark: #0F172A;
-  --bg-dark-light: #1E293B;
-  --bg-dark-lighter: #334155;
-  --text-light: #F8FAFC;
-  --text-light-dark: #94A3B8;
-}
-
-/* 亮色模式 */
-:root.light-mode {
-  --bg-dark: #FFFFFF;
-  --bg-dark-light: #F8FAFC;
-  --bg-dark-lighter: #E2E8F0;
-  --text-light: #1E293B;
-  --text-light-dark: #64748B;
-}
-
-/* 自定义Swagger UI样式 */
-#swagger-ui .swagger-ui {
-  font-family: inherit;
-  background: var(--bg-dark-light);
-  color: var(--text-light);
-}
-
-#swagger-ui .topbar {
-  display: none;
-}
-
-#swagger-ui .info {
-  margin: 2rem 0;
-  color: var(--text-light) !important;
-}
-
-#swagger-ui .info h1,
-#swagger-ui .info h2,
-#swagger-ui .info h3 {
-  color: var(--text-light) !important;
-}
-
-#swagger-ui .info .title {
-  color: var(--text-light) !important;
-}
-
-#swagger-ui .scheme-container {
-  background: var(--bg-dark-lighter);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin: 1rem 0;
-}
-
-/* 暗色模式的Swagger UI */
-#swagger-ui.swagger-dark .swagger-ui {
-  background: var(--bg-dark-light);
-}
-
-#swagger-ui.swagger-dark .swagger-ui .opblock {
-  background: var(--bg-dark);
-  border: 1px solid var(--bg-dark-lighter);
-}
-
-#swagger-ui.swagger-dark .swagger-ui .opblock .opblock-summary {
-  border-color: var(--bg-dark-lighter);
-}
-
-/* 亮色模式的Swagger UI */
-#swagger-ui.swagger-light .swagger-ui {
-  background: var(--bg-dark-light);
-}
-
-#swagger-ui.swagger-light .swagger-ui .opblock {
-  background: var(--bg-dark);
-  border: 1px solid var(--bg-dark-lighter);
-}
-
-/* 通用样式 */
-.bg-dark {
-  background-color: var(--bg-dark);
-}
-
-.bg-dark-light {
-  background-color: var(--bg-dark-light);
-}
-
-.border-dark-lighter {
-  border-color: var(--bg-dark-lighter);
-}
-
-.text-light {
-  color: var(--text-light);
-}
-
-.text-light-dark {
-  color: var(--text-light-dark);
-}
+/* 页面特定的Swagger UI样式微调，如果需要的话 */
 </style> 

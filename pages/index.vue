@@ -1,17 +1,17 @@
 <template>
   <div class="min-h-screen bg-dark text-light">
     <!-- Header -->
-    <header class="bg-dark-light/50 backdrop-blur-lg border-b border-dark-lighter fixed w-full z-50">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header class="navbar-default fixed w-full z-50">
+      <nav class="container-default h-20 flex items-center justify-between">
         <div class="flex items-center">
           <h1 class="text-2xl font-bold text-light">WebAI</h1>
         </div>
         <div class="hidden lg:flex space-x-8">
-          <a href="#" class="text-light-dark hover:text-primary transition-colors">{{ $t('nav.home') }}</a>
-          <a href="#" class="text-light-dark hover:text-primary transition-colors">{{ $t('nav.tools') }}</a>
-          <a href="#" class="text-light-dark hover:text-primary transition-colors">{{ $t('nav.features') }}</a>
-          <a href="#" class="text-light-dark hover:text-primary transition-colors">{{ $t('nav.testimonials') }}</a>
-          <a href="#" class="text-light-dark hover:text-primary transition-colors">{{ $t('nav.price') }}</a>
+          <a href="#" class="nav-link">{{ $t('nav.home') }}</a>
+          <a href="#" class="nav-link">{{ $t('nav.tools') }}</a>
+          <a href="#" class="nav-link">{{ $t('nav.features') }}</a>
+          <a href="#" class="nav-link">{{ $t('nav.testimonials') }}</a>
+          <a href="#" class="nav-link">{{ $t('nav.price') }}</a>
         </div>
         <div class="hidden lg:flex items-center space-x-4">
           <!-- 根据认证状态显示不同内容 -->
@@ -19,7 +19,7 @@
             <div class="text-light">{{ $t('nav.welcome') }}, {{ user?.name || 'User' }}</div>
             <button 
               @click="handleLogout"
-              class="bg-dark-light text-light-dark px-4 py-2 rounded-xl hover:bg-dark-lighter transition duration-300"
+              class="btn-secondary"
             >
               {{ $t('nav.logout') }}
             </button>
@@ -27,7 +27,7 @@
           <NuxtLink 
             v-else
             to="/auth"
-            class="bg-primary text-white px-6 py-2.5 rounded-xl hover:bg-primary-dark transition duration-300"
+            class="btn-primary"
           >
             {{ $t('nav.tryFree') }}
           </NuxtLink>
@@ -36,7 +36,7 @@
         </div>
         <!-- Mobile menu button -->
         <div class="lg:hidden">
-          <button class="text-light-dark hover:text-primary">
+          <button class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -47,20 +47,20 @@
 
     <!-- Hero Section -->
     <section class="pt-20 bg-hero-pattern animate-fade-up">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div class="container-default section-padding">
         <div class="text-center">
-          <h1 class="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up">
+          <h1 class="text-heading-1 animate-fade-up">
             {{ $t('hero.title') }}
             <span class="text-primary block mt-2">{{ $t('hero.subtitle') }}</span>
           </h1>
-          <p class="mt-8 text-xl text-light-dark max-w-3xl mx-auto leading-relaxed animate-fade-up animation-delay-200">
+          <p class="mt-8 text-body max-w-3xl mx-auto animate-fade-up animation-delay-200">
             {{ $t('hero.description') }}
           </p>
           <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-fade-up animation-delay-400">
             <NuxtLink 
               v-if="!isAuthenticated"
               to="/auth"
-              class="bg-primary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-dark transition duration-300"
+              class="btn-primary text-lg font-semibold px-8 py-4"
             >
               {{ $t('hero.tryFree') }}
             </NuxtLink>
@@ -70,7 +70,7 @@
             >
               {{ $t('hero.welcome_back') }}, {{ user?.name }}!
             </div>
-            <button class="bg-dark-light text-light border border-dark-lighter px-8 py-4 rounded-xl text-lg font-semibold hover:bg-dark-lighter transition duration-300">
+            <button class="btn-secondary text-lg font-semibold px-8 py-4">
               {{ $t('hero.viewDemo') }}
             </button>
           </div>
@@ -79,10 +79,10 @@
     </section>
 
     <!-- Partners Section -->
-    <section class="py-16 bg-gradient-1 overflow-hidden scroll-reveal">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="section-padding bg-gradient-1 overflow-hidden scroll-reveal">
+      <div class="container-default">
         <div class="text-center mb-12">
-          <h2 class="text-2xl font-bold mb-4">{{ $t('partners.title') }}</h2>
+          <h2 class="text-heading-3 mb-4">{{ $t('partners.title') }}</h2>
           <p class="text-light-dark">{{ $t('partners.subtitle') }}</p>
         </div>
         <div class="flex space-x-8 animate-scroll">
@@ -105,18 +105,18 @@
     </section>
 
     <!-- Features Section -->
-    <section class="py-24 bg-gradient-2 scroll-reveal">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="section-padding bg-gradient-2 scroll-reveal">
+      <div class="container-default">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">{{ $t('features.title') }}</h2>
+          <h2 class="text-heading-2 mb-4">{{ $t('features.title') }}</h2>
           <p class="text-light-dark">{{ $t('features.subtitle') }}</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid-responsive-3">
           <div v-for="(feature, index) in localizedFeatures" :key="feature.title" 
-               class="bg-dark-light p-8 rounded-xl border border-dark-lighter hover:border-primary transition-all duration-300 scroll-reveal"
+               class="card-default scroll-reveal"
                :style="{ animationDelay: `${index * 100}ms` }">
-            <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <div class="icon-container mb-6">
               <component :is="getIconComponent(feature.icon)" class="w-8 h-8 text-primary" />
             </div>
             <h3 class="text-xl font-semibold mb-4">{{ feature.title }}</h3>
@@ -127,44 +127,44 @@
     </section>
 
     <!-- Tools Section -->
-    <section class="py-24 bg-gradient-3 scroll-reveal">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="section-padding bg-gradient-3 scroll-reveal">
+      <div class="container-default">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">{{ $t('tools.title') }}</h2>
+          <h2 class="text-heading-2 mb-4">{{ $t('tools.title') }}</h2>
           <p class="text-light-dark">{{ $t('tools.subtitle') }}</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid-responsive-3">
           <div v-for="(tool, index) in localizedTools" :key="tool.title"
-               class="bg-dark p-8 rounded-xl border border-dark-lighter hover:border-primary transition-all duration-300 scroll-reveal"
+               class="card-default scroll-reveal"
                :style="{ animationDelay: `${index * 100}ms` }">
-            <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 mx-auto">
+            <div class="icon-container mb-6 mx-auto">
               <component :is="getIconComponent(tool.icon)" class="w-8 h-8 text-primary flex-shrink-0" />
             </div>
             <h3 class="text-xl font-semibold mb-4">{{ tool.title }}</h3>
             <p class="text-light-dark mb-6">{{ tool.description }}</p>
-            <a href="#" class="text-primary hover:text-primary-dark transition-colors">{{ $t('tools.learn_more') }} →</a>
+            <a href="#" class="nav-link">{{ $t('tools.learn_more') }} →</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Trending Topics Section -->
-    <section class="py-24 bg-gradient-radial scroll-reveal">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="section-padding bg-gradient-radial scroll-reveal">
+      <div class="container-default">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">{{ $t('trending.title') }}</h2>
+          <h2 class="text-heading-2 mb-4">{{ $t('trending.title') }}</h2>
           <p class="text-light-dark">{{ $t('trending.subtitle') }}</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid-responsive-3">
           <div v-for="(topic, index) in localizedTrendingTopics" :key="topic.title"
-               class="bg-dark-light p-6 rounded-xl border border-dark-lighter hover:border-primary transition-all duration-300 scroll-reveal"
+               class="card-default scroll-reveal"
                :style="{ animationDelay: `${index * 100}ms` }">
             <h3 class="text-lg font-semibold mb-4">{{ topic.title }}</h3>
             <p class="text-light-dark mb-6">{{ topic.description }}</p>
             <div class="flex items-center space-x-2">
-              <div v-for="avatar in topic.avatars" :key="avatar" class="w-8 h-8 rounded-xl overflow-hidden -ml-2 first:ml-0 border-2 border-dark">
+              <div v-for="avatar in topic.avatars" :key="avatar" class="icon-container-sm -ml-2 first:ml-0 border-2 border-dark overflow-hidden">
                 <img :src="avatar" alt="User" class="w-full h-full object-cover" />
               </div>
               <span class="text-light-dark text-sm ml-2">+{{ topic.additionalUsers }} {{ $t('trending.users') }}</span>
@@ -175,10 +175,10 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-24 bg-gradient-1 scroll-reveal">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="section-padding bg-gradient-1 scroll-reveal">
+      <div class="container-default">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">{{ $t('faq.title') }}</h2>
+          <h2 class="text-heading-2 mb-4">{{ $t('faq.title') }}</h2>
           <p class="text-light-dark">{{ $t('faq.subtitle') }}</p>
         </div>
 
@@ -200,16 +200,16 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-24 bg-gradient-2 scroll-reveal">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="section-padding bg-gradient-2 scroll-reveal">
+      <div class="container-default">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">{{ $t('pricing.title') }}</h2>
+          <h2 class="text-heading-2 mb-4">{{ $t('pricing.title') }}</h2>
           <p class="text-light-dark">{{ $t('pricing.subtitle') }}</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid-responsive-4">
           <div v-for="(plan, index) in localizedPlans" :key="plan.name"
-               class="bg-dark-light p-8 rounded-xl border border-dark-lighter hover:border-primary transition-all duration-300 scroll-reveal"
+               class="card-default scroll-reveal"
                :style="{ animationDelay: `${index * 100}ms` }">
             <h3 class="text-2xl font-bold mb-2">{{ plan.name }}</h3>
             <div class="flex items-baseline mb-8">
@@ -222,7 +222,7 @@
                 <span>{{ feature }}</span>
               </li>
             </ul>
-            <button class="w-full bg-primary text-white py-3 rounded-xl hover:bg-primary-dark transition duration-300">
+            <button class="btn-primary w-full py-3">
               {{ $t('pricing.try_plan') }} {{ plan.name }}
             </button>
           </div>
@@ -231,8 +231,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark-light border-t border-dark-lighter py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <footer class="navbar-default py-12">
+      <div class="container-default text-center">
         <h1 class="text-2xl font-bold text-light mb-4">{{ $t('footer.title') }}</h1>
         <p class="text-light-dark">{{ $t('footer.subtitle') }}</p>
         <div class="mt-8 text-light-dark">
@@ -464,125 +464,6 @@ onMounted(() => {
 })
 </script>
 
-<style>
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-/* 默认暗色模式 */
-:root {
-  --bg-dark: #0F172A;
-  --bg-dark-light: #1E293B;
-  --bg-dark-lighter: #334155;
-  --text-light: #F8FAFC;
-  --text-light-dark: #94A3B8;
-  --hero-gradient-start: rgba(15, 23, 42, 0.95);
-  --hero-gradient-end: var(--color-primary, #8B5CF6);
-  --hero-gradient-opacity: 0.1;
-}
-
-/* 亮色模式 */
-:root.light-mode {
-  --bg-dark: #FFFFFF;
-  --bg-dark-light: #F8FAFC;
-  --bg-dark-lighter: #E2E8F0;
-  --text-light: #1E293B;
-  --text-light-dark: #64748B;
-  --hero-gradient-start: rgba(248, 250, 252, 0.95);
-  --hero-gradient-end: var(--color-primary, #8B5CF6);
-  --hero-gradient-opacity: 0.05;
-}
-
-/* Hero pattern background */
-.bg-hero-pattern {
-  background: linear-gradient(135deg, 
-    var(--hero-gradient-start) 0%, 
-    color-mix(in srgb, var(--hero-gradient-end) calc(var(--hero-gradient-opacity) * 100%), transparent) 50%,
-    var(--hero-gradient-start) 100%
-  );
-}
-
-/* Section gradient backgrounds */
-.bg-gradient-1 {
-  background: linear-gradient(45deg, 
-    var(--bg-dark-light) 0%, 
-    color-mix(in srgb, var(--color-primary, #8B5CF6) calc(var(--hero-gradient-opacity) * 50%), transparent) 100%
-  );
-}
-
-.bg-gradient-2 {
-  background: linear-gradient(-45deg, 
-    var(--bg-dark) 0%, 
-    color-mix(in srgb, var(--color-primary, #8B5CF6) calc(var(--hero-gradient-opacity) * 70%), transparent) 60%,
-    var(--bg-dark) 100%
-  );
-}
-
-.bg-gradient-3 {
-  background: linear-gradient(90deg, 
-    var(--bg-dark-light) 0%, 
-    color-mix(in srgb, var(--color-primary, #8B5CF6) calc(var(--hero-gradient-opacity) * 40%), transparent) 50%,
-    var(--bg-dark-light) 100%
-  );
-}
-
-.bg-gradient-radial {
-  background: radial-gradient(circle at center, 
-    color-mix(in srgb, var(--color-primary, #8B5CF6) calc(var(--hero-gradient-opacity) * 30%), transparent) 0%,
-    var(--bg-dark) 70%
-  );
-}
-
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.scroll-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.animate-fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.6s ease-out forwards;
-}
-
-.animation-delay-200 {
-  animation-delay: 200ms;
-}
-
-.animation-delay-400 {
-  animation-delay: 400ms;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-scroll {
-  animation: scroll 20s linear infinite;
-}
-
-.animate-scroll-duplicate {
-  animation: scroll 20s linear infinite;
-}
-
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
+<style scoped>
+/* 页面特定样式，如果有的话可以保留在这里 */
 </style> 
