@@ -26,15 +26,20 @@
     "@stagewise/toolbar-vue": "^0.1.2",
     "@types/bcryptjs": "^3.0.0",
     "@types/pg": "^8.15.4",
+    "@vueuse/core": "^13.3.0",
+    "@vueuse/motion": "^3.0.3",
     "bcryptjs": "^3.0.2",
+    "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
     "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.13.2",
     "pg": "^8.16.0",
     "prisma": "^6.8.2",
+    "simplex-noise": "^4.0.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-dist": "^5.22.0",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.9"

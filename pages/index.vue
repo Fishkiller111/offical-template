@@ -46,36 +46,44 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="pt-20 bg-hero-pattern animate-fade-up">
-      <div class="container-default section-padding">
-        <div class="text-center">
-          <h1 class="text-heading-1 animate-fade-up">
-            {{ $t('hero.title') }}
-            <span class="text-primary block mt-2">{{ $t('hero.subtitle') }}</span>
-          </h1>
-          <p class="mt-8 text-body max-w-3xl mx-auto animate-fade-up animation-delay-200">
-            {{ $t('hero.description') }}
-          </p>
-          <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-fade-up animation-delay-400">
-            <NuxtLink 
-              v-if="!isAuthenticated"
-              to="/auth"
-              class="btn-primary text-lg font-semibold px-8 py-4"
-            >
-              {{ $t('hero.tryFree') }}
-            </NuxtLink>
-            <div 
-              v-else
-              class="bg-primary text-white px-8 py-4 rounded-xl text-lg font-semibold opacity-75 cursor-default"
-            >
-              {{ $t('hero.welcome_back') }}, {{ user?.name }}!
+    <section class="pt-20 relative overflow-hidden min-h-screen flex items-center">
+      <Vortex 
+        :particle-count="400"
+        :base-speed="0.0"
+        :range-speed="1.5"
+        :base-radius="1"
+        :range-radius="2"
+      >
+        <div class="container-default py-24 relative z-10">
+          <div class="text-center">
+            <h1 class="text-heading-1 animate-fade-up">
+              {{ $t('hero.title') }}
+              <span class="text-primary block mt-2">{{ $t('hero.subtitle') }}</span>
+            </h1>
+            <p class="mt-8 text-body max-w-3xl mx-auto animate-fade-up animation-delay-200">
+              {{ $t('hero.description') }}
+            </p>
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-fade-up animation-delay-400">
+              <NuxtLink 
+                v-if="!isAuthenticated"
+                to="/auth"
+                class="btn-primary text-lg font-semibold px-8 py-4"
+              >
+                {{ $t('hero.tryFree') }}
+              </NuxtLink>
+              <div 
+                v-else
+                class="bg-primary text-white px-8 py-4 rounded-xl text-lg font-semibold opacity-75 cursor-default"
+              >
+                {{ $t('hero.welcome_back') }}, {{ user?.name }}!
+              </div>
+              <button class="btn-secondary text-lg font-semibold px-8 py-4">
+                {{ $t('hero.viewDemo') }}
+              </button>
             </div>
-            <button class="btn-secondary text-lg font-semibold px-8 py-4">
-              {{ $t('hero.viewDemo') }}
-            </button>
           </div>
         </div>
-      </div>
+      </Vortex>
     </section>
 
     <!-- Partners Section -->
@@ -261,6 +269,8 @@ import {
 import LanguageSwitcher from '~/components/LanguageSwitcher.vue'
 // Import ThemeSelector Component
 import ThemeSelector from '~/components/ThemeSelector.vue'
+// Import Vortex Component (simplified version for testing)
+import Vortex from '~/components/ui/VortexSimple.vue'
 
 // 获取i18n实例
 const { t } = useI18n()
