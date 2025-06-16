@@ -1,0 +1,256 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# 响应式设计开发规则
+
+## 设计原则
+项目采用移动优先的响应式设计策略，确保在所有设备上都有优秀的用户体验。
+
+## 断点系统
+### Tailwind CSS 断点
+```css
+sm: 640px   /* 小型设备 */
+md: 768px   /* 中型设备 */
+lg: 1024px  /* 大型设备 */
+xl: 1280px  /* 超大设备 */
+2xl: 1536px /* 超超大设备 */
+```
+
+### 项目主要断点
+- **< lg (1024px)**: 移动端布局
+- **lg+ (1024px+)**: 桌面端布局
+
+## 布局策略
+### 主页面 [pages/index.vue](mdc:pages/index.vue)
+#### 导航栏
+```vue
+<!-- 移动端：汉堡菜单 -->
+<div class="lg:hidden">
+  <button class="hamburger-menu">☰</button>
+</div>
+
+<!-- 桌面端：水平导航 -->
+<nav class="hidden lg:flex space-x-8">
+  <NuxtLink>导航项</NuxtLink>
+</nav>
+```
+
+#### Hero 区域
+```vue
+<section class="py-12 lg:py-16">
+  <h1 class="text-3xl lg:text-5xl xl:text-6xl">
+  <p class="text-base lg:text-lg">
+  <div class="mt-6 lg:mt-8 space-y-4 lg:space-y-0 lg:space-x-4 lg:flex">
+</section>
+```
+
+#### 网格布局
+```vue
+<!-- 响应式网格 -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+```
+
+### 仪表板 [pages/dashboard.vue](mdc:pages/dashboard.vue)
+#### 布局切换
+```vue
+<!-- 移动端：垂直布局 -->
+<div class="min-h-screen bg-dark flex flex-col lg:flex-row">
+
+<!-- 桌面端：左侧导航 -->
+<aside class="hidden lg:flex w-64 bg-dark-light">
+
+<!-- 移动端：顶部导航 -->
+<div class="lg:hidden bg-dark-light border-b">
+```
+
+#### 聊天界面
+```vue
+<!-- 桌面端：聊天区内输入框 -->
+<div class="hidden lg:block p-4 lg:p-6">
+
+<!-- 移动端：固定底部输入框 -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0">
+```
+
+## 组件响应式设计
+### 按钮尺寸
+```vue
+<!-- 移动端友好的按钮尺寸 -->
+<button class="px-4 py-3 lg:px-6 lg:py-3 text-sm lg:text-base">
+<button class="w-full lg:w-auto">
+```
+
+### 文字大小
+```vue
+<!-- 响应式文字 -->
+<h1 class="text-2xl lg:text-3xl xl:text-4xl">
+<h2 class="text-xl lg:text-2xl">
+<h3 class="text-lg lg:text-xl">
+<p class="text-sm lg:text-base">
+```
+
+### 间距调整
+```vue
+<!-- 响应式间距 -->
+<div class="p-4 lg:p-6 xl:p-8">
+<div class="space-y-4 lg:space-y-6">
+<div class="mb-6 lg:mb-8">
+```
+
+## 移动端优化
+### 触摸友好设计
+- **最小触摸区域**: 44px × 44px
+- **按钮间距**: 至少 8px
+- **输入框高度**: 最小 44px
+
+### 移动端导航
+```vue
+<!-- 汉堡菜单 -->
+<button class="p-2 rounded-lg bg-dark hover:bg-dark-lighter">
+  <Icon icon="tabler:menu-2" class="w-6 h-6" />
+</button>
+
+<!-- 左拉菜单 -->
+<div class="fixed top-0 left-0 h-full w-80 transform transition-transform duration-300">
+```
+
+### 移动端输入
+```vue
+<!-- 固定底部输入，避免键盘遮挡 -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-dark-light p-4 z-20">
+  <input class="w-full px-4 py-3 rounded-lg">
+</div>
+```
+
+## 图片和媒体
+### 响应式图片
+```vue
+<!-- 自适应图片 -->
+<img class="w-full h-auto max-w-md lg:max-w-lg xl:max-w-xl">
+
+<!-- 背景图片 -->
+<div class="bg-cover bg-center bg-no-repeat min-h-[300px] lg:min-h-[400px]">
+```
+
+### 图标尺寸
+```vue
+<!-- 响应式图标 -->
+<Icon class="w-5 h-5 lg:w-6 lg:h-6">
+<Icon class="w-8 h-8 lg:w-10 lg:h-10">
+```
+
+## 性能优化
+### 条件渲染
+```vue
+<!-- 避免在移动端渲染复杂效果 -->
+<div v-if="!isMobile" class="tech-effects">
+  <!-- 科技感效果 -->
+</div>
+
+<!-- 移动端简化版本 -->
+<div v-else class="simple-version">
+  <!-- 简化内容 -->
+</div>
+```
+
+### 懒加载
+```vue
+<!-- 图片懒加载 -->
+<img loading="lazy" class="w-full h-auto">
+
+<!-- 组件懒加载 -->
+<ClientOnly>
+  <HeavyComponent />
+</ClientOnly>
+```
+
+## 测试策略
+### 设备测试
+- **手机**: iPhone SE (375px), iPhone 12 (390px)
+- **平板**: iPad (768px), iPad Pro (1024px)
+- **桌面**: MacBook (1280px), 大屏 (1920px+)
+
+### 浏览器测试
+- Chrome DevTools 设备模拟
+- Safari 移动端
+- Firefox 响应式模式
+
+### 功能测试
+- 导航菜单切换
+- 表单输入体验
+- 滚动性能
+- 触摸手势
+
+## 常见问题解决
+### 水平滚动
+```css
+/* 防止水平滚动 */
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+```
+
+### 移动端视口
+```vue
+<!-- 确保正确的视口设置 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+### iOS Safari 兼容
+```css
+/* iOS Safari 底部安全区域 */
+.mobile-input {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 避免缩放 */
+input {
+  font-size: 16px; /* 防止 iOS 缩放 */
+}
+```
+
+## 开发工具
+### 调试工具
+- Chrome DevTools 响应式模式
+- Firefox 响应式设计模式
+- Safari Web Inspector
+
+### 测试工具
+```javascript
+// 检测设备类型
+const isMobile = window.innerWidth < 1024
+const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024
+const isDesktop = window.innerWidth >= 1024
+
+// 监听窗口大小变化
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 1024) {
+    isMobileMenuOpen.value = false
+  }
+})
+```
+
+## 最佳实践
+### CSS 类命名
+```vue
+<!-- 移动优先，然后添加大屏样式 -->
+<div class="text-sm lg:text-base xl:text-lg">
+<div class="p-4 lg:p-6 xl:p-8">
+<div class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+```
+
+### 组件设计
+- 优先考虑移动端体验
+- 渐进增强到桌面端
+- 保持一致的视觉层次
+- 确保可访问性
+
+### 性能考虑
+- 移动端优先加载关键资源
+- 大屏设备渐进增强
+- 避免不必要的重排重绘
+- 使用 CSS 硬件加速

@@ -11,13 +11,13 @@ export interface JWTPayload {
 
 // 生成JWT token
 export function generateToken(payload: JWTPayload): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN })
+  return (jwt as any).sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN })
 }
 
 // 验证JWT token
 export function verifyToken(token: string): JWTPayload | null {
   try {
-    return jwt.verify(token, JWT_SECRET) as JWTPayload
+    return (jwt as any).verify(token, JWT_SECRET) as JWTPayload
   } catch (error) {
     return null
   }

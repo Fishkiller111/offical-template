@@ -21,7 +21,7 @@
         :class="{ 'bg-primary/10 text-primary': $i18n.locale === locale.code }"
       >
         <span class="text-lg">{{ locale.flag }}</span>
-        <span class="text-sm">{{ locale.name }}</span>
+        <span class="text-sm text-light">{{ locale.name }}</span>
       </div>
     </div>
   </div>

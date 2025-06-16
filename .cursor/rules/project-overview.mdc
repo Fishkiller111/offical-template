@@ -3,42 +3,88 @@ description:
 globs: 
 alwaysApply: false
 ---
-# WebAI 项目开发规则
+# WebAI AI杀毒软件项目开发规则
 
 ## 项目概述
-这是一个基于 Nuxt.js 3 的现代化 AI 平台项目，支持多语言、多主题的用户认证系统。
+这是一个基于 Nuxt.js 3 的现代化 AI 杀毒软件平台，提供智能安全防护、AI 安全教学和用户管理功能。
 
 ## 技术栈
 - **前端框架**: Nuxt.js 3.17.4 + Vue 3 Composition API
-- **样式**: Tailwind CSS + 自定义主题系统
+- **样式**: Tailwind CSS + 自定义主题系统 + 科技感动效
 - **数据库**: PostgreSQL + Prisma ORM
 - **认证**: JWT + Cookie 存储
 - **国际化**: @nuxtjs/i18n (中英文)
 - **图标**: @heroicons/vue + @iconify/vue
-- **API文档**: Swagger/OpenAPI 3.0
+- **包管理**: pnpm + @stagewise/toolbar-vue v0.4.7
 
-## 核心功能
+## 核心功能模块
 1. **用户认证系统** - [server/api/auth/](mdc:server/api/auth)
-2. **多主题切换** - [components/ThemeSelector.vue](mdc:components/ThemeSelector.vue)
-3. **国际化支持** - [locale/](mdc:locale)
-4. **API文档系统** - [pages/api-docs.vue](mdc:pages/api-docs.vue)
-5. **数据库管理** - [prisma/](mdc:prisma)
+2. **AI 消毒助手** - 智能聊天界面，病毒扫描和文件分析
+3. **AI 消毒金牌讲师** - 安全课程、视频教程、AI 对话
+4. **个人中心** - 用户信息管理、系统设置
+5. **多主题系统** - [composables/useTheme.js](mdc:composables/useTheme.js)
+6. **国际化支持** - [locale/](mdc:locale)
+
+## 页面架构
+### 主页面 - [pages/index.vue](mdc:pages/index.vue)
+- 响应式设计，支持移动端
+- Hero 区域、功能介绍、工具展示、定价方案
+- 完整的导航和用户认证集成
+
+### 仪表板 - [pages/dashboard.vue](mdc:pages/dashboard.vue)
+- 左侧导航栏（桌面端）/ 汉堡菜单（移动端）
+- AI 助手聊天界面，支持快速操作
+- 科技感鼠标跟踪效果和动画
+- 完全响应式设计
+
+## 主题和样式系统
+### 主题管理
+- **插件初始化**: [plugins/theme.client.js](mdc:plugins/theme.client.js)
+- **Composable**: [composables/useTheme.js](mdc:composables/useTheme.js)
+- **组件**: [components/ThemeSelector.vue](mdc:components/ThemeSelector.vue)
+
+### 科技感效果
+- 鼠标跟踪系统（主光标 + 外圈 + 粒子效果）
+- 卡片悬停动画（.tech-hover, .card-tech）
+- 按钮科技效果（.tech-button）
+- 导航渐变线条（.nav-tech）
+- 性能优化（硬件加速、事件节流）
+
+## 国际化系统
+### 语言支持
+- 中文（默认）
+- 英文
+- 动态切换，本地存储
+
+### 翻译文件
+- [locale/zh.json](mdc:locale/zh.json) - 中文翻译
+- [locale/en.json](mdc:locale/en.json) - 英文翻译
+- 完整的 dashboard、chat、auth 等模块翻译
+
+## 开发原则
+- **中文交流**: 总是用中文与用户交流
+- **模块独立**: 不私自新增独立于项目的模块或组件
+- **性能优先**: 使用硬件加速、事件节流等优化技术
+- **响应式设计**: 所有页面必须支持移动端
+- **无自动构建**: 修改代码后不主动执行 build 操作
 
 ## 文件结构
 ```
 offical-template/
 ├── components/          # Vue组件
+│   ├── ui/             # UI组件
+│   ├── ThemeSelector.vue
+│   └── LanguageSwitcher.vue
 ├── composables/         # 组合式函数
+│   └── useTheme.js     # 主题管理
 ├── pages/              # 页面路由
+│   ├── index.vue       # 主页
+│   ├── dashboard.vue   # 仪表板
+│   └── auth.vue        # 认证页面
+├── plugins/            # Nuxt插件
+│   └── theme.client.js # 主题初始化
 ├── server/api/         # API端点
-├── prisma/             # 数据库模型
 ├── locale/             # 国际化文件
-├── public/             # 静态资源
+├── assets/css/         # 全局样式
 └── nuxt.config.ts      # Nuxt配置
 ```
-
-## 开发原则
-- 使用中文与用户交流
-- 不私自新增独立模块
-- 保持代码简洁高效
-- 遵循项目现有架构

@@ -6,18 +6,70 @@ alwaysApply: false
 # 主题系统开发规则
 
 ## 主题架构
-项目使用自定义主题系统，支持亮暗模式切换和6种主题颜色。
+项目使用统一的主题管理系统，支持亮暗模式切换和6种主题颜色，包含科技感动效。
 
-## 核心组件
-- **主题选择器**: [components/ThemeSelector.vue](mdc:components/ThemeSelector.vue)
+## 核心文件
+- **插件初始化**: [plugins/theme.client.js](mdc:plugins/theme.client.js) - 应用启动时立即初始化主题
+- **Composable**: [composables/useTheme.js](mdc:composables/useTheme.js) - 统一的主题管理接口
+- **主题选择器**: [components/ThemeSelector.vue](mdc:components/ThemeSelector.vue) - 用户界面组件
 - **语言切换器**: [components/LanguageSwitcher.vue](mdc:components/LanguageSwitcher.vue)
 - **主配置**: [tailwind.config.ts](mdc:tailwind.config.ts)
 
-## 主题系统原理
-### 亮暗模式切换
+## 主题初始化流程
+### 1. 插件级初始化 (最高优先级)
+```javascript
+// plugins/theme.client.js
+export default defineNuxtPlugin(() => {
+  // 立即读取localStorage并应用主题
+  // 确保页面刷新时主题立即生效
+})
+```
+
+### 2. Composable 管理
+```javascript
+// composables/useTheme.js
+export const useTheme = () => {
+  return {
+    initializeTheme,    // 初始化主题
+    setThemeColor,      // 设置主题色
+    setDarkMode,        // 设置暗色模式
+    getCurrentTheme,    // 获取当前主题
+    getCurrentDarkMode  // 获取当前模式
+  }
+}
+```
+
+### 3. 组件使用
+```vue
+<!-- components/ThemeSelector.vue -->
+<script setup>
+const { themes, setThemeColor, setDarkMode } = useTheme()
+</script>
+```
+
+## 主题颜色系统
+### 可用主题
+1. **紫色** (#8B5CF6) - 默认主题
+2. **蓝色** (#3B82F6)
+3. **绿色** (#10B981) - 安全主题
+4. **红色** (#EF4444) - 警告主题
+5. **橙色** (#F97316)
+6. **粉色** (#EC4899)
+
+### CSS变量动态更新
+```css
+:root {
+  --color-primary: #8B5CF6;        /* 主题色 */
+  --color-primary-dark: #7C3AED;   /* 深色变体 */
+  --hero-gradient-end: #8B5CF6;    /* 渐变终点 */
+}
+```
+
+## 亮暗模式系统
+### 默认配置
 - **默认模式**: 暗色模式
 - **切换机制**: 在`<html>`元素添加/移除`light-mode`类
-- **本地存储**: `localStorage.getItem('dark-mode')`
+- **本地存储**: `localStorage.setItem('dark-mode', 'true/false')`
 
 ### CSS变量定义
 ```css
@@ -38,21 +90,37 @@ alwaysApply: false
 }
 ```
 
-## 主题颜色系统
-### 可用主题
-1. 紫色 (#8B5CF6) - 默认
-2. 蓝色 (#3B82F6)
-3. 绿色 (#10B981)
-4. 红色 (#EF4444)
-5. 橙色 (#F97316)
-6. 粉色 (#EC4899)
+## 科技感动效系统
+### 鼠标跟踪效果
+- **主光标**: 4x4px 圆点，跟随鼠标
+- **外圈光环**: 8x8px 边框圆圈，悬停时放大
+- **粒子效果**: 随机生成，最多20个粒子
+- **性能优化**: 60fps节流，硬件加速
 
-### 主题切换实现
-- 动态设置CSS变量`--color-primary`
-- 自动生成深色变体`--color-primary-dark`
-- 本地存储: `localStorage.getItem('theme-color')`
+### CSS动效类
+```css
+.tech-hover     /* 卡片扫光动画 */
+.tech-button    /* 按钮径向渐变效果 */
+.message-tech   /* 聊天消息滑动动画 */
+.nav-tech       /* 导航渐变线条 */
+.input-tech     /* 输入框聚焦发光 */
+.card-tech      /* 3D变换和阴影 */
+.pulse-tech     /* 呼吸动画 */
+.glow-tech      /* 发光边框效果 */
+```
+
+### 性能优化技术
+```css
+.will-change-transform { will-change: transform; }
+.gpu-accelerated { 
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+```
 
 ## 样式类规范
+### 主题相关类
 使用项目自定义类而非Tailwind的`dark:`前缀：
 - `bg-dark` → 主背景色
 - `bg-dark-light` → 浅色背景
@@ -60,8 +128,38 @@ alwaysApply: false
 - `text-light` → 主文字色
 - `text-light-dark` → 辅助文字色
 
+### 科技感类
+- `tech-*` → 科技感动效
+- `gpu-accelerated` → 硬件加速
+- `will-change-*` → 性能优化
+
 ## 开发注意事项
+### 主题切换
 - 新页面必须使用项目主题系统
 - 避免使用Tailwind的`dark:`类
 - 确保主题切换时正确更新所有组件
-- 监听`MutationObserver`来响应主题变化
+- 页面刷新后主题立即生效
+
+### 科技感效果
+- 仅在桌面端启用鼠标效果
+- 使用事件节流避免性能问题
+- 粒子数量限制在20个以内
+- 所有动画使用硬件加速
+
+### 错误处理
+- 主题初始化包含try-catch
+- localStorage访问异常时使用默认主题
+- 控制台警告而非错误中断
+
+## 故障排除
+### 主题刷新问题
+如果页面刷新后主题色不正确：
+1. 检查 [plugins/theme.client.js](mdc:plugins/theme.client.js) 是否正确加载
+2. 确认localStorage中的值是否正确
+3. 验证CSS变量是否正确设置
+
+### 科技感效果问题
+如果动效不流畅：
+1. 确认使用了硬件加速类
+2. 检查事件节流是否生效
+3. 验证粒子数量是否超限

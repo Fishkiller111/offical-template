@@ -23,7 +23,7 @@
     "@nuxtjs/i18n": "^9.5.5",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@prisma/client": "^6.8.2",
-    "@stagewise/toolbar-vue": "^0.1.2",
+    "@stagewise/toolbar-vue": "^0.4.7",
     "@types/bcryptjs": "^3.0.0",
     "@types/pg": "^8.15.4",
     "@vueuse/core": "^13.3.0",
@@ -42,6 +42,7 @@
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.9"
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/swagger-jsdoc": "^6.0.4"
   }
 }

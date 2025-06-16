@@ -3,95 +3,283 @@ description:
 globs: 
 alwaysApply: false
 ---
-# 国际化开发规则
+# 国际化系统开发规则
 
 ## 国际化架构
-项目使用@nuxtjs/i18n实现完整的中英文国际化支持。
+项目使用 @nuxtjs/i18n 实现完整的中英文双语支持，覆盖所有用户界面和功能模块。
 
 ## 核心配置
-- **国际化配置**: [nuxt.config.ts](mdc:nuxt.config.ts)
-- **中文语言包**: [locale/zh.ts](mdc:locale/zh.ts)
-- **英文语言包**: [locale/en.ts](mdc:locale/en.ts)
-- **语言切换器**: [components/LanguageSwitcher.vue](mdc:components/LanguageSwitcher.vue)
-
-## 支持语言
-- **中文** (zh): 默认语言
-- **英文** (en): 备选语言
-
-## 配置结构
+### Nuxt 配置 [nuxt.config.ts](mdc:nuxt.config.ts)
 ```typescript
-i18n: {
-  locales: [
-    { code: 'zh', name: '中文', file: 'zh.ts' },
-    { code: 'en', name: 'English', file: 'en.ts' }
-  ],
-  defaultLocale: 'zh',
-  langDir: 'locale/',
-  strategy: 'no_prefix'
+export default defineNuxtConfig({
+  modules: ['@nuxtjs/i18n'],
+  i18n: {
+    locales: [
+      { code: 'zh', name: '中文', file: 'zh.json' },
+      { code: 'en', name: 'English', file: 'en.json' }
+    ],
+    defaultLocale: 'zh',
+    langDir: 'locale/',
+    strategy: 'no_prefix'
+  }
+})
+```
+
+## 翻译文件结构
+### 中文翻译 [locale/zh.json](mdc:locale/zh.json)
+```json
+{
+  "nav": {
+    "home": "首页",
+    "features": "功能特色", 
+    "tools": "AI工具",
+    "pricing": "定价方案",
+    "login": "登录",
+    "logout": "退出登录"
+  },
+  "dashboard": {
+    "ai_assistant": "AI消毒助手",
+    "ai_instructor": "AI消毒金牌讲师", 
+    "my_profile": "我的",
+    "chat_welcome": "您好！我是您的AI安全助手，可以帮您进行病毒扫描、文件分析和安全咨询。",
+    "quick_scan": "快速扫描系统",
+    "upload_analysis": "上传文件分析", 
+    "security_tips": "获取安全建议"
+  },
+  "auth": {
+    "login_title": "登录您的账户",
+    "register_title": "创建新账户",
+    "name": "姓名",
+    "email": "邮箱地址",
+    "password": "密码"
+  }
 }
 ```
 
-## 翻译键值结构
-### 导航部分 (nav)
-- `nav.home` - 首页
-- `nav.tools` - 工具
-- `nav.features` - 功能
-- `nav.tryFree` - 免费试用
-- `nav.logout` - 退出登录
-
-### 认证部分 (auth)
-- `auth.login` - 登录
-- `auth.register` - 注册
-- `auth.email` - 邮箱
-- `auth.password` - 密码
-- `auth.name` - 姓名
-
-### API文档部分 (apiDocs)
-- `apiDocs.title` - API 文档
-- `apiDocs.description` - 查看完整的 API 接口文档
-
-### 错误信息 (error)
-- `error.login_failed` - 登录失败
-- `error.invalid_credentials` - 用户名或密码错误
-- `error.network_error` - 网络错误
-
-## 使用规范
-### 在模板中使用
-```vue
-<template>
-  <h1>{{ $t('hero.title') }}</h1>
-  <p>{{ $t('hero.description') }}</p>
-</template>
+### 英文翻译 [locale/en.json](mdc:locale/en.json)
+```json
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "tools": "AI Tools", 
+    "pricing": "Pricing",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "ai_assistant": "AI Antivirus Assistant",
+    "ai_instructor": "AI Security Expert Instructor",
+    "my_profile": "Profile",
+    "chat_welcome": "Hello! I'm your AI security assistant, ready to help with virus scanning, file analysis, and security consultation.",
+    "quick_scan": "Quick System Scan",
+    "upload_analysis": "Upload File Analysis",
+    "security_tips": "Get Security Tips"
+  },
+  "auth": {
+    "login_title": "Sign in to your account", 
+    "register_title": "Create a new account",
+    "name": "Name",
+    "email": "Email Address",
+    "password": "Password"
+  }
+}
 ```
 
-### 在脚本中使用
-```javascript
+## 翻译键命名规范
+### 模块化命名
+```
+nav.*           # 导航相关
+auth.*          # 认证相关  
+dashboard.*     # 仪表板相关
+hero.*          # 首页Hero区域
+features.*      # 功能介绍
+tools.*         # 工具展示
+pricing.*       # 定价方案
+faq.*           # 常见问题
+footer.*        # 页脚信息
+```
+
+### 功能性命名
+```
+*.title         # 标题
+*.desc          # 描述
+*.button        # 按钮文字
+*.placeholder   # 输入提示
+*.error         # 错误信息
+*.success       # 成功信息
+```
+
+## 组件中的使用
+### 基本用法
+```vue
+<template>
+  <h1>{{ $t('dashboard.ai_assistant') }}</h1>
+  <p>{{ $t('dashboard.ai_assistant_desc') }}</p>
+  <button>{{ $t('dashboard.start_chat') }}</button>
+</template>
+
+<script setup>
 const { t } = useI18n()
-const title = computed(() => t('page.title'))
+const title = computed(() => t('dashboard.title'))
+</script>
 ```
 
 ### 动态翻译
-```javascript
-const localizedFeatures = computed(() => [
-  {
-    title: t('features.latest_ai'),
-    description: t('features.latest_ai_desc')
-  }
-])
+```vue
+<script setup>
+const { t } = useI18n()
+
+// 动态获取翻译
+const getAIResponse = (message) => {
+  if (message.includes('扫描')) return t('dashboard.ai_scan_response')
+  if (message.includes('文件')) return t('dashboard.ai_file_response')
+  return t('dashboard.ai_default_response')
+}
+
+// 页面标题
+useHead({
+  title: computed(() => t('dashboard.title'))
+})
+</script>
 ```
 
-## 本地存储
-- 语言选择自动保存到localStorage
-- 页面刷新后保持用户选择
+## 语言切换组件
+### LanguageSwitcher [components/LanguageSwitcher.vue](mdc:components/LanguageSwitcher.vue)
+```vue
+<template>
+  <div class="relative">
+    <button @click="isOpen = !isOpen" class="flex items-center space-x-2">
+      <Icon icon="tabler:world" class="w-4 h-4" />
+      <span class="text-light">{{ currentLocale.name }}</span>
+    </button>
+    
+    <div v-show="isOpen" class="absolute dropdown-menu">
+      <button 
+        v-for="locale in availableLocales"
+        @click="switchLanguage(locale.code)"
+        class="dropdown-item"
+      >
+        {{ locale.name }}
+      </button>
+    </div>
+  </div>
+</template>
 
-## 开发规范
-- 所有用户可见文本必须国际化
-- 翻译键使用点分割命名法
-- 保持中英文翻译内容一致性
+<script setup>
+const { locale, locales, setLocale } = useI18n()
+
+const switchLanguage = (code) => {
+  setLocale(code)
+  localStorage.setItem('locale', code)
+  isOpen.value = false
+}
+</script>
+```
+
+## 完整翻译覆盖
+### 主页面翻译
+- **Hero区域**: 标题、副标题、按钮、特色描述
+- **功能介绍**: 6个核心功能的标题和描述
+- **AI工具**: 4个工具的名称和说明
+- **热门功能**: 3个功能的详细介绍
+- **定价方案**: 3个套餐的完整信息
+- **FAQ**: 6个常见问题和答案
+- **页脚**: 公司信息、链接、版权声明
+
+### 仪表板翻译
+- **导航**: 3个主要模块的名称和描述
+- **AI助手**: 聊天界面、快速操作、AI回复
+- **AI讲师**: 课程、视频、聊天功能
+- **个人中心**: 用户信息、系统设置、通知选项
+
+### 认证系统翻译
+- **登录**: 表单标签、按钮、错误提示
+- **注册**: 完整注册流程的所有文本
+- **验证**: 邮箱验证、密码重置等
+
+## 本地化存储
+### 语言偏好保存
+```javascript
+// 保存用户语言选择
+localStorage.setItem('locale', 'zh')
+
+// 应用启动时恢复
+const savedLocale = localStorage.getItem('locale') || 'zh'
+setLocale(savedLocale)
+```
+
+### 主题集成
+语言切换器与主题选择器集成在同一个设置面板中：
+```vue
+<!-- 系统设置 -->
+<div class="space-y-6">
+  <div>
+    <label>{{ $t('dashboard.language') }}</label>
+    <LanguageSwitcher />
+  </div>
+  <div>
+    <label>{{ $t('dashboard.theme') }}</label>
+    <ThemeSelector />
+  </div>
+</div>
+```
+
+## SEO 优化
+### 多语言 Meta 标签
+```vue
+<script setup>
+const { t } = useI18n()
+
+useHead({
+  title: computed(() => t('meta.title')),
+  meta: [
+    {
+      name: 'description',
+      content: computed(() => t('meta.description'))
+    },
+    {
+      property: 'og:title', 
+      content: computed(() => t('meta.og_title'))
+    }
+  ]
+})
+</script>
+```
+
+## 开发注意事项
+### 翻译完整性
 - 新增功能必须同时添加中英文翻译
-- 优先确保中文翻译的准确性
+- 翻译键名要语义化，便于维护
+- 避免硬编码文本，全部使用翻译键
 
-## SEO支持
-- 自动设置页面lang属性
-- 支持多语言meta标签
-- 搜索引擎友好的URL结构
+### 文本长度考虑
+- 英文通常比中文长 20-30%
+- 设计时预留足够空间
+- 测试不同语言下的布局
+
+### 上下文翻译
+- 考虑不同语言的语法结构
+- 避免直译，注重本地化表达
+- 专业术语保持一致性
+
+### 性能优化
+- 翻译文件按模块拆分
+- 避免重复的翻译键
+- 使用计算属性缓存翻译结果
+
+## 维护和更新
+### 翻译文件管理
+1. 新增翻译时同时更新中英文文件
+2. 定期检查翻译的准确性和一致性
+3. 删除不再使用的翻译键
+
+### 质量保证
+- 所有文本都要经过翻译
+- 测试不同语言下的用户体验
+- 确保专业术语的准确性
+
+### 扩展性考虑
+- 翻译键结构支持未来添加更多语言
+- 组件设计考虑不同语言的文本长度
+- 保持翻译文件的结构一致性
