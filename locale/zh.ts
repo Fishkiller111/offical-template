@@ -3,6 +3,7 @@ export default {
     home: "首页",
     tools: "工具",
     features: "特性",
+    about: "关于我们",
     testimonials: "用户评价",
     price: "价格",
     tryFree: "注册/登录",
@@ -10,11 +11,11 @@ export default {
     logout: "退出登录"
   },
   hero: {
-    title: "AI 驱动的解决方案",
-    subtitle: "助力高效商业",
-    description: "通过AI驱动的解决方案转变您的内容创作方式。在几秒钟内生成高质量内容。",
-    tryFree: "免费试用 WebAI",
-    viewDemo: "查看演示",
+    title: "专业环境消毒灭菌服务",
+    subtitle: "守护健康人居环境",
+    description: "森德优护（北京）科技公司，清华科技园孵化的科技创新企业，专注于人居环境有害微生物污染治理，采用源自瑞士SANOSIL的先进灭菌技术。",
+    tryFree: "免费咨询服务",
+    viewDemo: "查看服务详情",
     welcome_back: "欢迎回来"
   },
   auth: {
@@ -41,34 +42,41 @@ export default {
     register_success: "注册成功"
   },
   partners: {
-    title: "领先企业的信赖之选",
-    subtitle: "已有数千家企业使用我们的AI解决方案"
+    title: "专业资质认证",
+    subtitle: "中关村高新企业 | 公共环境消毒杀菌企业甲级资质",
+    member_title: "协会会员单位",
+    beijing_association: "北京市室内及车内环境净化协会优秀会员单位",
+    shanghai_association: "上海市环境净化行业协会优秀会员单位",
+    tech_innovation: "科技创新认证企业",
+    certification_badge: "认",
+    grade_badge: "甲",
+    grade_qualification: "甲级资质"
   },
   features: {
-    title: "AI 在几秒钟内生成内容",
-    subtitle: "最佳写作AI替代平台，轻松创建内容",
-    latest_ai: "最新AI技术",
-    latest_ai_desc: "访问尖端AI模型，实现卓越的内容生成和分析。",
-    multiple_languages: "多种语言",
-    multiple_languages_desc: "生成具有母语般流利度和准确性的多语言内容。",
-    edit_text: "轻松编辑文本",
-    edit_text_desc: "直观的编辑界面，具有AI驱动的建议和改进功能。"
+    title: "专业环境卫生健康服务",
+    subtitle: "致力于环境卫生健康事业，降低人类感染风险",
+    advanced_tech: "先进灭菌技术",
+    advanced_tech_desc: "采用源自瑞士SANOSIL的灭菌技术，高效去除室内病毒病菌污染危害。",
+    comprehensive_service: "全面服务体系",
+    comprehensive_service_desc: "提供环境消毒、卫生教育、咨询和解决方案的一体化服务。",
+    health_environment: "健康环境塑造",
+    health_environment_desc: "通过环境消毒控制污染源，塑造健康人居和工作环境。"
   },
   tools: {
-    title: "它能为您写什么？",
-    subtitle: "最佳写作AI替代平台，轻松创建内容",
-    blog_post: "博客文章",
-    blog_post_desc: "使用AI驱动的内容建议生成引人入胜的博客文章。",
-    social_media: "社交媒体",
-    social_media_desc: "创建推动互动的引人注目的社交媒体内容。",
-    email: "电子邮件",
-    email_desc: "编写具有完美语调和结构的专业电子邮件。",
-    faq: "常见问题",
-    faq_desc: "为您的网站生成全面的常见问题部分。",
-    testimonials: "推荐",
-    testimonials_desc: "为您的产品创建真实可信的推荐。",
-    app_description: "应用描述",
-    app_description_desc: "编写引人注目的应用描述以提高转化率。",
+    title: "中元氢杰卫生服务项目",
+    subtitle: "森德优护（北京）科技公司专业消毒灭菌服务",
+    home_disinfection: "家庭消毒",
+    home_disinfection_desc: "专业的家庭环境消毒灭菌服务，保障家人健康安全。",
+    office_disinfection: "办公场所消毒",
+    office_disinfection_desc: "为企业提供安全的工作环境，降低疫情传播风险。",
+    car_disinfection: "车内消毒",
+    car_disinfection_desc: "车内环境深度清洁消毒，创造安全的出行空间。",
+    health_education: "卫生教育",
+    health_education_desc: "提供专业的卫生健康知识培训和指导服务。",
+    consultation: "专业咨询",
+    consultation_desc: "根据客户需求提供定制化的消毒解决方案。",
+    equipment_service: "设备服务",
+    equipment_service_desc: "专业消毒设备的安装、维护和技术支持服务。",
     learn_more: "了解更多"
   },
   trending: {
@@ -121,10 +129,25 @@ export default {
       users_unlimited: "无限用户"
     }
   },
+  about: {
+    title: "关于森德优护",
+    subtitle: "清华科技园孵化的科技创新企业",
+    company_title: "公司简介",
+    company_intro: "森德优护（北京）科技公司致力于环境卫生健康事业，专注于人居环境有害微生物污染治理。通过环境消毒控制污染源及病毒病菌污染，降低人类感染风险，塑造健康人居和工作环境。",
+    project_title: "服务项目",
+    project_intro: "中元氢杰卫生服务项目是森德优护（北京）科技公司推出的家庭消毒灭菌服务项目，采用源自瑞士SANOSIL的灭菌技术，提供去除室内病毒病菌污染危害服务的同时，也提供卫生教育、咨询、解决方案服务。",
+    qualifications_title: "企业资质",
+    high_tech: "中关村高新企业单位",
+    disinfection_qualification: "公共环境消毒杀菌企业甲级资质",
+    contact_us: "联系我们"
+  },
   footer: {
-    title: "WebAI",
-    subtitle: "AI 驱动的解决方案，助力高效商业",
-    copyright: "© 2024 WebAI. 版权所有。"
+    title: "森德优护（北京）科技公司",
+    subtitle: "专业环境消毒灭菌服务提供商",
+    contact_info: "联系方式",
+    phone: "电话：13911874044（雁西）",
+    email: "邮箱：476341210{'@'}qq.com",
+    copyright: "© 2024 森德优护（北京）科技公司. 版权所有。"
   },
   apiDocs: {
     title: "API 文档",

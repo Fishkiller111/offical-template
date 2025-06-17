@@ -27,8 +27,8 @@ importers:
         specifier: ^6.8.2
         version: 6.8.2(prisma@6.8.2(typescript@5.8.3))(typescript@5.8.3)
       '@stagewise/toolbar-vue':
-        specifier: ^0.4.7
-        version: 0.4.7(vue@3.5.16(typescript@5.8.3))
+        specifier: ^0.4.8
+        version: 0.4.8(vue@3.5.16(typescript@5.8.3))
       '@types/bcryptjs':
         specifier: ^3.0.0
         version: 3.0.0
@@ -1382,13 +1382,13 @@ packages:
   '@speed-highlight/core@1.2.7':
     resolution: {integrity: sha512-0dxmVj4gxg3Jg879kvFS/msl4s9F3T9UXC1InxgOf7t5NvcPD97u/WTA5vL/IxWHMn7qSxBozqrnnE2wvl1m8g==}
 
-  '@stagewise/toolbar-vue@0.4.7':
-    resolution: {integrity: sha512-RLiBIjho7hNLO9/neR9aqfFT5375DBL7Y1ciKGQBSYdD9nq5iUZE7LLkXKpFogQO0NJ7QuxO9QNV9WGZyMhzAg==}
+  '@stagewise/toolbar-vue@0.4.8':
+    resolution: {integrity: sha512-Zvxz59apepocu2cOD8UqUWIF7fIABGr+DNDSmz6Kp2nf1APNmfiK3QJ52rI2PfVDG9jaSE56EfYUA0t1xFJLYw==}
     peerDependencies:
       vue: '>=3.0.0'
 
-  '@stagewise/toolbar@0.4.7':
-    resolution: {integrity: sha512-xU+lDPiGEhFs6Vx5Xwy1y43VQJIul9muN5u0eXnMoFKJYL+ku931at3gTRVP/+4BEgAC4G8P5g3pACyYa0ikOA==}
+  '@stagewise/toolbar@0.4.8':
+    resolution: {integrity: sha512-0ByvC4hYdHHf3rK5M+xSR9mipHYr8naNn2OgDBtv4DE0SoSCr08KfQtZ6VpsBNbOW/Mh1Y4c/AoWcyCTOc2ocA==}
 
   '@tanstack/virtual-core@3.13.9':
     resolution: {integrity: sha512-3jztt0jpaoJO5TARe2WIHC1UQC3VMLAFUW5mmMo0yrkwtDB2AQP0+sh10BVUpWrnvHjSLvzFizydtEGLCJKFoQ==}
@@ -6252,12 +6252,12 @@ snapshots:
 
   '@speed-highlight/core@1.2.7': {}
 
-  '@stagewise/toolbar-vue@0.4.7(vue@3.5.16(typescript@5.8.3))':
+  '@stagewise/toolbar-vue@0.4.8(vue@3.5.16(typescript@5.8.3))':
     dependencies:
-      '@stagewise/toolbar': 0.4.7
+      '@stagewise/toolbar': 0.4.8
       vue: 3.5.16(typescript@5.8.3)
 
-  '@stagewise/toolbar@0.4.7': {}
+  '@stagewise/toolbar@0.4.8': {}
 
   '@tanstack/virtual-core@3.13.9': {}
 

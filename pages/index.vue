@@ -4,14 +4,14 @@
     <header class="navbar-default fixed w-full z-50">
       <nav class="container-default h-16 lg:h-20 flex items-center justify-between">
         <div class="flex items-center">
-          <h1 class="text-xl lg:text-2xl font-bold text-light">WebAI</h1>
+          <img src="/logo/logo-_.png" alt="WebAI" class="h-8 lg:h-10 w-auto">
         </div>
         
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex space-x-8">
           <a href="#features" class="nav-link">{{ $t('nav.features') }}</a>
           <a href="#tools" class="nav-link">{{ $t('nav.tools') }}</a>
-          <a href="#trending" class="nav-link">{{ $t('nav.testimonials') }}</a>
+          <a href="#about" class="nav-link">{{ $t('nav.about') }}</a>
           <a href="#pricing" class="nav-link">{{ $t('nav.price') }}</a>
         </div>
         
@@ -66,7 +66,7 @@
         <div class="container-default py-4 space-y-4">
           <a href="#features" @click="isMobileMenuOpen = false" class="block nav-link py-2">{{ $t('nav.features') }}</a>
           <a href="#tools" @click="isMobileMenuOpen = false" class="block nav-link py-2">{{ $t('nav.tools') }}</a>
-          <a href="#trending" @click="isMobileMenuOpen = false" class="block nav-link py-2">{{ $t('nav.testimonials') }}</a>
+          <a href="#about" @click="isMobileMenuOpen = false" class="block nav-link py-2">{{ $t('nav.about') }}</a>
           <a href="#pricing" @click="isMobileMenuOpen = false" class="block nav-link py-2">{{ $t('nav.price') }}</a>
           
           <div class="pt-4 border-t border-dark-lighter space-y-3">
@@ -139,27 +139,43 @@
       </Vortex>
     </section>
 
-    <!-- Partners Section -->
-    <section class="py-12 lg:py-16 bg-gradient-1 overflow-hidden scroll-reveal">
+    <!-- Qualifications Section -->
+    <section class="py-12 lg:py-16 bg-gradient-1 scroll-reveal">
       <div class="container-default px-4 lg:px-0">
         <div class="text-center mb-8 lg:mb-12">
           <h2 class="text-2xl lg:text-heading-3 mb-4 font-semibold">{{ $t('partners.title') }}</h2>
           <p class="text-light-dark text-sm lg:text-base">{{ $t('partners.subtitle') }}</p>
         </div>
-        <div class="flex space-x-6 lg:space-x-8 animate-scroll">
-          <div class="flex space-x-6 lg:space-x-8 animate-scroll-duplicate">
-            <img src="https://via.placeholder.com/120x40" alt="Partner 1" class="h-6 lg:h-8 object-contain"/>
-            <img src="https://via.placeholder.com/120x40" alt="Partner 2" class="h-6 lg:h-8 object-contain"/>
-            <img src="https://via.placeholder.com/120x40" alt="Partner 3" class="h-6 lg:h-8 object-contain"/>
-            <img src="https://via.placeholder.com/120x40" alt="Partner 4" class="h-6 lg:h-8 object-contain"/>
-            <img src="https://via.placeholder.com/120x40" alt="Partner 5" class="h-6 lg:h-8 object-contain"/>
+        <div class="max-w-4xl mx-auto">
+          <!-- 主要资质 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="card-default text-center p-6">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-white text-2xl font-bold">{{ $t('partners.certification_badge') }}</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2 text-light">{{ $t('about.high_tech') }}</h3>
+              <p class="text-light-dark text-sm">{{ $t('partners.tech_innovation') }}</p>
+            </div>
+            <div class="card-default text-center p-6">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-white text-2xl font-bold">{{ $t('partners.grade_badge') }}</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2 text-light">{{ $t('partners.grade_qualification') }}</h3>
+              <p class="text-light-dark text-sm">{{ $t('about.disinfection_qualification') }}</p>
+            </div>
           </div>
-          <div class="flex space-x-6 lg:space-x-8 animate-scroll-duplicate">
-            <img src="https://via.placeholder.com/120x40" alt="Partner 1" class="h-6 lg:h-8 object-contain"/>
-            <img src="https://via.placeholder.com/120x40" alt="Partner 2" class="h-6 lg:h-8 object-contain"/>
-            <img src="https://via.placeholder.com/120x40" alt="Partner 3" class="h-6 lg:h-8 object-contain"/>
-            <img src="https://via.placeholder.com/120x40" alt="Partner 4" class="h-6 lg:h-8 object-contain"/>
-            <img src="https://via.placeholder.com/120x40" alt="Partner 5" class="h-6 lg:h-8 object-contain"/>
+          
+          <!-- 协会会员 -->
+          <div class="text-center">
+            <h3 class="text-lg font-semibold mb-6 text-light">{{ $t('partners.member_title') }}</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-dark-light p-4 rounded-lg">
+                <p class="text-light text-sm">{{ $t('partners.beijing_association') }}</p>
+              </div>
+              <div class="bg-dark-light p-4 rounded-lg">
+                <p class="text-light text-sm">{{ $t('partners.shanghai_association') }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -210,25 +226,50 @@
       </div>
     </section>
 
-    <!-- Trending Topics Section -->
-    <section id="trending" class="py-12 lg:py-16 bg-gradient-radial scroll-reveal">
+    <!-- About Us Section -->
+    <section id="about" class="py-12 lg:py-16 bg-gradient-1 scroll-reveal">
       <div class="container-default px-4 lg:px-0">
         <div class="text-center mb-12 lg:mb-16">
-          <h2 class="text-2xl lg:text-heading-2 mb-4 font-bold">{{ $t('trending.title') }}</h2>
-          <p class="text-light-dark text-sm lg:text-base">{{ $t('trending.subtitle') }}</p>
+          <h2 class="text-2xl lg:text-heading-2 mb-4 font-bold">{{ $t('about.title') }}</h2>
+          <p class="text-light-dark text-sm lg:text-base">{{ $t('about.subtitle') }}</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          <div v-for="(topic, index) in localizedTrendingTopics" :key="topic.title"
-               class="card-default scroll-reveal"
-               :style="{ animationDelay: `${index * 100}ms` }">
-            <h3 class="text-base lg:text-lg font-semibold mb-3 lg:mb-4">{{ topic.title }}</h3>
-            <p class="text-light-dark mb-4 lg:mb-6 text-sm lg:text-base">{{ topic.description }}</p>
-            <div class="flex items-center space-x-2">
-              <div v-for="avatar in topic.avatars" :key="avatar" class="w-6 h-6 lg:w-8 lg:h-8 -ml-1 first:ml-0 border-2 border-dark overflow-hidden rounded-full">
-                <img :src="avatar" alt="User" class="w-full h-full object-cover" />
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
+            <!-- 公司介绍 -->
+            <div class="card-default scroll-reveal">
+              <h3 class="text-xl lg:text-2xl font-bold mb-4 text-light">{{ $t('about.company_title') }}</h3>
+              <p class="text-light-dark text-sm lg:text-base mb-6 leading-relaxed">
+                {{ $t('about.company_intro') }}
+              </p>
+            </div>
+
+            <!-- 项目介绍 -->
+            <div class="card-default scroll-reveal">
+              <h3 class="text-xl lg:text-2xl font-bold mb-4 text-light">{{ $t('about.project_title') }}</h3>
+              <p class="text-light-dark text-sm lg:text-base mb-6 leading-relaxed">
+                {{ $t('about.project_intro') }}
+              </p>
+            </div>
+          </div>
+
+          <!-- 企业资质 -->
+          <div class="card-default scroll-reveal text-center">
+            <h3 class="text-xl lg:text-2xl font-bold mb-6 text-light">{{ $t('about.qualifications_title') }}</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div class="bg-dark-light p-4 rounded-lg">
+                <p class="text-primary font-semibold">{{ $t('about.high_tech') }}</p>
               </div>
-              <span class="text-light-dark text-xs lg:text-sm ml-2">+{{ topic.additionalUsers }} {{ $t('trending.users') }}</span>
+              <div class="bg-dark-light p-4 rounded-lg">
+                <p class="text-primary font-semibold">{{ $t('about.disinfection_qualification') }}</p>
+              </div>
+            </div>
+            <div class="text-center">
+              <h4 class="text-lg font-semibold mb-4 text-light">{{ $t('partners.member_title') }}</h4>
+              <div class="space-y-2">
+                <p class="text-light-dark text-sm">{{ $t('partners.beijing_association') }}</p>
+                <p class="text-light-dark text-sm">{{ $t('partners.shanghai_association') }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -236,6 +277,7 @@
     </section>
 
     <!-- FAQ Section -->
+    <!-- 
     <section class="py-12 lg:py-16 bg-gradient-1 scroll-reveal">
       <div class="container-default px-4 lg:px-0">
         <div class="text-center mb-12 lg:mb-16">
@@ -259,8 +301,10 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- Pricing Section -->
+    <!-- 
     <section id="pricing" class="py-12 lg:py-16 bg-gradient-2 scroll-reveal">
       <div class="container-default px-4 lg:px-0">
         <div class="text-center mb-12 lg:mb-16">
@@ -290,14 +334,33 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- Footer -->
     <footer class="navbar-default py-8 lg:py-12">
-      <div class="container-default text-center px-4 lg:px-0">
-        <h1 class="text-xl lg:text-2xl font-bold text-light mb-3 lg:mb-4">{{ $t('footer.title') }}</h1>
-        <p class="text-light-dark text-sm lg:text-base">{{ $t('footer.subtitle') }}</p>
-        <div class="mt-6 lg:mt-8 text-light-dark text-xs lg:text-sm">
-          {{ $t('footer.copyright') }}
+      <div class="container-default px-4 lg:px-0">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- 公司信息 -->
+            <div class="text-center md:text-left">
+              <h1 class="text-xl lg:text-2xl font-bold text-light mb-3 lg:mb-4">{{ $t('footer.title') }}</h1>
+              <p class="text-light-dark text-sm lg:text-base mb-4">{{ $t('footer.subtitle') }}</p>
+            </div>
+            
+            <!-- 联系方式 -->
+            <div class="text-center md:text-right">
+              <h3 class="text-lg font-semibold text-light mb-4">{{ $t('footer.contact_info') }}</h3>
+              <div class="space-y-2">
+                <p class="text-light-dark text-sm">{{ $t('footer.phone') }}</p>
+                <p class="text-light-dark text-sm">{{ $t('footer.email') }}</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 版权信息 -->
+          <div class="text-center border-t border-dark-lighter pt-6">
+            <p class="text-light-dark text-xs lg:text-sm">{{ $t('footer.copyright') }}</p>
+          </div>
         </div>
       </div>
     </footer>
@@ -361,18 +424,18 @@ const getIconComponent = (iconName) => {
 const localizedFeatures = computed(() => [
   {
     icon: 'CpuChipIcon',
-    title: t('features.latest_ai'),
-    description: t('features.latest_ai_desc')
+    title: t('features.advanced_tech'),
+    description: t('features.advanced_tech_desc')
   },
   {
     icon: 'LanguageIcon',
-    title: t('features.multiple_languages'),
-    description: t('features.multiple_languages_desc')
+    title: t('features.comprehensive_service'),
+    description: t('features.comprehensive_service_desc')
   },
   {
     icon: 'PencilSquareIcon',
-    title: t('features.edit_text'),
-    description: t('features.edit_text_desc')
+    title: t('features.health_environment'),
+    description: t('features.health_environment_desc')
   }
 ])
 
@@ -380,69 +443,37 @@ const localizedFeatures = computed(() => [
 const localizedTools = computed(() => [
   {
     icon: 'DocumentTextIcon',
-    title: t('tools.blog_post'),
-    description: t('tools.blog_post_desc')
+    title: t('tools.home_disinfection'),
+    description: t('tools.home_disinfection_desc')
   },
   {
     icon: 'GlobeAltIcon',
-    title: t('tools.social_media'),
-    description: t('tools.social_media_desc')
+    title: t('tools.office_disinfection'),
+    description: t('tools.office_disinfection_desc')
   },
   {
     icon: 'EnvelopeIcon',
-    title: t('tools.email'),
-    description: t('tools.email_desc')
+    title: t('tools.car_disinfection'),
+    description: t('tools.car_disinfection_desc')
   },
   {
     icon: 'QuestionMarkCircleIcon',
-    title: t('tools.faq'),
-    description: t('tools.faq_desc')
+    title: t('tools.health_education'),
+    description: t('tools.health_education_desc')
   },
   {
     icon: 'ChatBubbleLeftRightIcon',
-    title: t('tools.testimonials'),
-    description: t('tools.testimonials_desc')
+    title: t('tools.consultation'),
+    description: t('tools.consultation_desc')
   },
   {
     icon: 'DevicePhoneMobileIcon',
-    title: t('tools.app_description'),
-    description: t('tools.app_description_desc')
+    title: t('tools.equipment_service'),
+    description: t('tools.equipment_service_desc')
   }
 ])
 
-// 本地化的trending topics数据
-const localizedTrendingTopics = computed(() => [
-  {
-    title: t('trending.ai_content_generation'),
-    description: t('trending.ai_content_generation_desc'),
-    avatars: [
-      'https://i.pravatar.cc/150?img=1',
-      'https://i.pravatar.cc/150?img=2',
-      'https://i.pravatar.cc/150?img=3'
-    ],
-    additionalUsers: 128
-  },
-  {
-    title: t('trending.marketing_copy'),
-    description: t('trending.marketing_copy_desc'),
-    avatars: [
-      'https://i.pravatar.cc/150?img=4',
-      'https://i.pravatar.cc/150?img=5'
-    ],
-    additionalUsers: 89
-  },
-  {
-    title: t('trending.seo_optimization'),
-    description: t('trending.seo_optimization_desc'),
-    avatars: [
-      'https://i.pravatar.cc/150?img=6',
-      'https://i.pravatar.cc/150?img=7',
-      'https://i.pravatar.cc/150?img=8',
-      'https://i.pravatar.cc/150?img=9'
-    ],
-    additionalUsers: 256
-  }
-])
+
 
 // 本地化的FAQ数据
 const faqOpenStates = ref([false, false, false])

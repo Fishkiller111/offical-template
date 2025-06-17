@@ -21,17 +21,17 @@
 
 /* 亮色模式 */
 :root.light-mode {
-  /* 亮色模式背景色 */
-  --bg-dark: #FFFFFF;
-  --bg-dark-light: #F8FAFC;
-  --bg-dark-lighter: #E2E8F0;
+  /* 亮色模式背景色 - 调整为更柔和的灰色调 */
+  --bg-dark: #F5F6F8;
+  --bg-dark-light: #EBEDF1;
+  --bg-dark-lighter: #D1D5DB;
   
   /* 亮色模式文字色 */
-  --text-light: #1E293B;
-  --text-light-dark: #64748B;
+  --text-light: #374151;
+  --text-light-dark: #6B7280;
   
   /* 亮色模式渐变 */
-  --hero-gradient-start: rgba(248, 250, 252, 0.95);
+  --hero-gradient-start: rgba(235, 237, 241, 0.95);
   --hero-gradient-end: var(--color-primary);
   --hero-gradient-opacity: 0.05;
 }

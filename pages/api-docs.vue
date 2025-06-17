@@ -4,8 +4,8 @@
     <header class="navbar-default">
       <nav class="container-default h-16 flex items-center justify-between">
         <div class="flex items-center">
-          <NuxtLink to="/" class="text-2xl font-bold text-light">
-            WebAI
+          <NuxtLink to="/" class="flex items-center">
+            <img src="/logo/logo-_.png" alt="WebAI" class="h-8 w-auto">
           </NuxtLink>
           <span class="ml-3 text-light-dark">/ API 文档</span>
         </div>

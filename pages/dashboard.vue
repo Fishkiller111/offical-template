@@ -31,8 +31,8 @@
       <!-- 菜单头部 -->
       <div class="p-6 border-b border-dark-lighter">
         <div class="flex items-center justify-between">
-          <NuxtLink to="/" class="text-xl font-bold text-light">
-            WebAI
+          <NuxtLink to="/" class="flex items-center">
+            <img src="/logo/logo-_.png" alt="WebAI" class="h-8 w-auto">
           </NuxtLink>
           <button 
             @click="isMobileMenuOpen = false"
@@ -61,9 +61,13 @@
         </nav>
       </div>
 
-      <!-- 菜单底部用户信息 -->
-      <div class="p-4 border-t border-dark-lighter">
-        <div class="flex items-center space-x-3 mb-3">
+      <!-- 菜单底部用户信息和上拉折叠菜单 -->
+      <div class="p-4 border-t border-dark-lighter relative user-menu-container">
+        <!-- 用户信息点击区域 -->
+        <button 
+          @click="isUserMenuOpen = !isUserMenuOpen"
+          class="flex items-center space-x-3 w-full text-left hover:bg-dark-lighter rounded-lg p-2 -m-2 transition-colors mb-2"
+        >
           <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
             <span class="text-white text-sm font-semibold">{{ user?.name?.charAt(0) || 'U' }}</span>
           </div>
@@ -71,12 +75,41 @@
             <div class="text-light text-sm font-medium">{{ user?.name || 'User' }}</div>
             <div class="text-light-dark text-xs">{{ user?.email || 'user@example.com' }}</div>
           </div>
+          <ChevronUpIcon 
+            :class="[
+              'w-5 h-5 text-light-dark transition-transform duration-300',
+              isUserMenuOpen ? 'rotate-180' : ''
+            ]"
+          />
+        </button>
+        
+        <!-- 上拉折叠菜单 -->
+        <div 
+          :class="[
+            'bg-dark border border-dark-lighter rounded-lg mb-2 transition-all duration-300 overflow-hidden',
+            isUserMenuOpen ? 'opacity-100 max-h-48' : 'opacity-0 max-h-0'
+          ]"
+        >
+          <div class="p-2 space-y-1">
+            <button 
+              @click="selectMobileSection('profile'); isUserMenuOpen = false"
+              :class="[
+                'w-full text-left px-3 py-2 rounded-md flex items-center space-x-2 text-sm transition-colors',
+                activeSection === 'profile' ? 'bg-primary text-white' : 'text-light hover:bg-dark-lighter'
+              ]"
+            >
+              <UserIcon class="w-4 h-4" />
+              <span>{{ $t('dashboard.my_profile') }}</span>
+            </button>
+          </div>
         </div>
+        
         <button 
           @click="handleLogout"
-          class="w-full btn-secondary text-sm py-2"
+          class="w-full btn-secondary text-sm py-2 flex items-center justify-center space-x-2"
         >
-          {{ $t('nav.logout') }}
+          <ArrowRightOnRectangleIcon class="w-4 h-4" />
+          <span>{{ $t('nav.logout') }}</span>
         </button>
       </div>
     </div>
@@ -85,8 +118,8 @@
     <aside class="hidden lg:flex w-64 bg-dark-light border-r border-dark-lighter flex-col">
       <!-- Logo区域 -->
       <div class="p-6 border-b border-dark-lighter">
-        <NuxtLink to="/" class="text-2xl font-bold text-light">
-          WebAI
+        <NuxtLink to="/" class="flex items-center">
+          <img src="/logo/logo-_.png" alt="WebAI" class="h-10 w-auto">
         </NuxtLink>
       </div>
 
@@ -117,24 +150,16 @@
               <span>{{ $t('dashboard.ai_instructor') }}</span>
             </button>
           </li>
-          <li>
-            <button 
-              @click="activeSection = 'profile'"
-              :class="[
-                'w-full text-left px-4 py-3 rounded-lg flex items-center space-x-3 nav-tech will-change-transform gpu-accelerated',
-                activeSection === 'profile' ? 'bg-primary text-white glow-tech' : 'text-light hover:bg-dark-lighter'
-              ]"
-            >
-              <UserIcon class="w-5 h-5" />
-              <span>{{ $t('dashboard.my_profile') }}</span>
-            </button>
-          </li>
         </ul>
       </nav>
 
-      <!-- 底部用户信息和退出 -->
-      <div class="p-4 border-t border-dark-lighter">
-        <div class="flex items-center space-x-3 mb-3">
+      <!-- 底部用户信息和上拉折叠菜单 -->
+      <div class="p-4 border-t border-dark-lighter relative user-menu-container">
+        <!-- 用户信息点击区域 -->
+        <button 
+          @click="isUserMenuOpen = !isUserMenuOpen"
+          class="flex items-center space-x-3 w-full text-left hover:bg-dark-lighter rounded-lg p-2 -m-2 transition-colors"
+        >
           <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
             <span class="text-white text-sm font-semibold">{{ user?.name?.charAt(0) || 'U' }}</span>
           </div>
@@ -142,13 +167,43 @@
             <div class="text-light text-sm font-medium">{{ user?.name || 'User' }}</div>
             <div class="text-light-dark text-xs">{{ user?.email || 'user@example.com' }}</div>
           </div>
-        </div>
-        <button 
-          @click="handleLogout"
-          class="w-full btn-secondary text-sm py-2"
-        >
-          {{ $t('nav.logout') }}
+          <ChevronUpIcon 
+            :class="[
+              'w-4 h-4 text-light-dark transition-transform duration-300',
+              isUserMenuOpen ? 'rotate-180' : ''
+            ]"
+          />
         </button>
+        
+        <!-- 上拉折叠菜单 -->
+        <div 
+          :class="[
+            'absolute bottom-full left-0 right-0 bg-dark-light border border-dark-lighter rounded-lg shadow-lg transition-all duration-300 overflow-hidden',
+            isUserMenuOpen ? 'opacity-100 translate-y-0 max-h-48' : 'opacity-0 translate-y-4 max-h-0'
+          ]"
+          v-show="isUserMenuOpen"
+        >
+          <div class="p-2 space-y-1">
+            <button 
+              @click="activeSection = 'profile'; isUserMenuOpen = false"
+              :class="[
+                'w-full text-left px-3 py-2 rounded-md flex items-center space-x-2 text-sm transition-colors',
+                activeSection === 'profile' ? 'bg-primary text-white' : 'text-light hover:bg-dark-lighter'
+              ]"
+            >
+              <UserIcon class="w-4 h-4" />
+              <span>{{ $t('dashboard.my_profile') }}</span>
+            </button>
+            <hr class="border-dark-lighter my-1">
+            <button 
+              @click="handleLogout"
+              class="w-full text-left px-3 py-2 rounded-md flex items-center space-x-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
+            >
+              <ArrowRightOnRectangleIcon class="w-4 h-4" />
+              <span>{{ $t('nav.logout') }}</span>
+            </button>
+          </div>
+        </div>
       </div>
     </aside>
 
@@ -447,7 +502,9 @@ import {
   BookOpenIcon,
   PlayIcon,
   ChatBubbleLeftRightIcon,
-  PaperAirplaneIcon
+  PaperAirplaneIcon,
+  ChevronUpIcon,
+  ArrowRightOnRectangleIcon
 } from '@heroicons/vue/24/outline'
 import LanguageSwitcher from '~/components/LanguageSwitcher.vue'
 import ThemeSelector from '~/components/ThemeSelector.vue'
@@ -475,13 +532,11 @@ const navigationItems = [
     key: 'ai-instructor', 
     label: 'dashboard.ai_instructor',
     icon: AcademicCapIcon
-  },
-  {
-    key: 'profile',
-    label: 'dashboard.my_profile', 
-    icon: UserIcon
   }
 ]
+
+// 用户菜单折叠状态
+const isUserMenuOpen = ref(false)
 
 // 移动端选择导航项
 const selectMobileSection = (section) => {
@@ -707,7 +762,15 @@ onMounted(() => {
     }
   }
   
+  // 点击外部区域关闭用户菜单
+  const handleClickOutside = (event) => {
+    if (isUserMenuOpen.value && !event.target.closest('.user-menu-container')) {
+      isUserMenuOpen.value = false
+    }
+  }
+  
   window.addEventListener('resize', handleResize)
+  document.addEventListener('click', handleClickOutside)
   
   // 初始化鼠标效果（仅在桌面端）
   let cleanupMouseEffects
@@ -717,6 +780,7 @@ onMounted(() => {
   
   onBeforeUnmount(() => {
     window.removeEventListener('resize', handleResize)
+    document.removeEventListener('click', handleClickOutside)
     if (cleanupMouseEffects) {
       cleanupMouseEffects()
     }

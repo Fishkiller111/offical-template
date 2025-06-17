@@ -3,6 +3,7 @@ export default {
     home: "Home",
     tools: "Tools",
     features: "Features",
+    about: "About Us",
     testimonials: "Testimonials",
     price: "Pricing",
     tryFree: "Sign up / Login",
@@ -10,11 +11,11 @@ export default {
     logout: "Logout"
   },
   hero: {
-    title: "AI-Powered Solutions",
-    subtitle: "For Efficient Business",
-    description: "Transform your content creation with AI-powered solutions. Generate high-quality content in seconds.",
-    tryFree: "Try WebAI for Free",
-    viewDemo: "View Demo",
+    title: "Professional Environmental Disinfection Services",
+    subtitle: "Protecting Healthy Living Environments",
+    description: "Sende Youhu (Beijing) Technology Co., Ltd, a technological innovation enterprise incubated by Tsinghua Science Park, specializing in harmful microbial pollution control in living environments using advanced sterilization technology from Switzerland SANOSIL.",
+    tryFree: "Free Consultation",
+    viewDemo: "View Service Details",
     welcome_back: "Welcome back"
   },
   auth: {
@@ -41,34 +42,41 @@ export default {
     register_success: "Registration successful"
   },
   partners: {
-    title: "Trusted by Leading Companies",
-    subtitle: "Thousands of businesses use our AI solutions"
+    title: "Professional Qualifications",
+    subtitle: "Zhongguancun High-tech Enterprise | Grade A Qualification for Public Environmental Disinfection",
+    member_title: "Association Members",
+    beijing_association: "Outstanding Member of Beijing Indoor and Vehicle Environment Purification Association",
+    shanghai_association: "Outstanding Member of Shanghai Environmental Purification Industry Association",
+    tech_innovation: "Technology Innovation Certified Enterprise",
+    certification_badge: "✓",
+    grade_badge: "A",
+    grade_qualification: "Grade A Qualification"
   },
   features: {
-    title: "AI Generate Content In Seconds",
-    subtitle: "Best writing AI Alternative platform to create content easily",
-    latest_ai: "Latest AI Technology",
-    latest_ai_desc: "Access cutting-edge AI models for superior content generation and analysis.",
-    multiple_languages: "Multiple languages",
-    multiple_languages_desc: "Generate content in multiple languages with native-like fluency and accuracy.",
-    edit_text: "Edit text easily",
-    edit_text_desc: "Intuitive editing interface with AI-powered suggestions and improvements."
+    title: "Professional Environmental Health Services",
+    subtitle: "Committed to environmental health and reducing human infection risks",
+    advanced_tech: "Advanced Sterilization Technology",
+    advanced_tech_desc: "Using sterilization technology from Switzerland SANOSIL to effectively eliminate indoor virus and bacteria contamination hazards.",
+    comprehensive_service: "Comprehensive Service System",
+    comprehensive_service_desc: "Providing integrated services including environmental disinfection, health education, consultation and solutions.",
+    health_environment: "Healthy Environment Creation",
+    health_environment_desc: "Creating healthy living and working environments through environmental disinfection to control pollution sources."
   },
   tools: {
-    title: "What Can It Write For You?",
-    subtitle: "Best writing AI Alternative platform to create content easily",
-    blog_post: "Blog Post",
-    blog_post_desc: "Generate engaging blog posts with AI-powered content suggestions.",
-    social_media: "Social Media",
-    social_media_desc: "Create compelling social media content that drives engagement.",
-    email: "Email",
-    email_desc: "Write professional emails with perfect tone and structure.",
-    faq: "FAQ",
-    faq_desc: "Generate comprehensive FAQ sections for your website.",
-    testimonials: "Testimonials",
-    testimonials_desc: "Create authentic-sounding testimonials for your products.",
-    app_description: "App Description",
-    app_description_desc: "Write compelling app descriptions that convert.",
+    title: "Zhongyuan Hydrogen Health Service Project",
+    subtitle: "Professional disinfection services by Sende Youhu (Beijing) Technology Co., Ltd",
+    home_disinfection: "Home Disinfection",
+    home_disinfection_desc: "Professional home environment disinfection services to ensure family health and safety.",
+    office_disinfection: "Office Disinfection",
+    office_disinfection_desc: "Providing safe working environments for enterprises and reducing pandemic transmission risks.",
+    car_disinfection: "Vehicle Disinfection",
+    car_disinfection_desc: "Deep cleaning and disinfection of vehicle interiors to create safe travel spaces.",
+    health_education: "Health Education",
+    health_education_desc: "Providing professional health and hygiene knowledge training and guidance services.",
+    consultation: "Professional Consultation",
+    consultation_desc: "Providing customized disinfection solutions according to customer needs.",
+    equipment_service: "Equipment Service",
+    equipment_service_desc: "Professional disinfection equipment installation, maintenance and technical support services.",
     learn_more: "Learn more"
   },
   trending: {
@@ -121,10 +129,25 @@ export default {
       users_unlimited: "Unlimited users"
     }
   },
+  about: {
+    title: "About Sende Youhu",
+    subtitle: "Technology Innovation Enterprise Incubated by Tsinghua Science Park",
+    company_title: "Company Introduction",
+    company_intro: "Sende Youhu (Beijing) Technology Co., Ltd is committed to environmental health and hygiene, specializing in harmful microbial pollution control in living environments. Through environmental disinfection to control pollution sources and virus bacteria contamination, reducing human infection risks and creating healthy living and working environments.",
+    project_title: "Service Projects",
+    project_intro: "Zhongyuan Hydrogen Health Service Project is a family disinfection and sterilization service project launched by Sende Youhu (Beijing) Technology Co., Ltd. Using sterilization technology from Switzerland SANOSIL, it provides services to eliminate indoor virus bacteria contamination hazards while also providing health education, consultation, and solution services.",
+    qualifications_title: "Enterprise Qualifications",
+    high_tech: "Zhongguancun High-tech Enterprise",
+    disinfection_qualification: "Grade A Qualification for Public Environmental Disinfection",
+    contact_us: "Contact Us"
+  },
   footer: {
-    title: "WebAI",
-    subtitle: "AI-Powered Solution For Effective Business",
-    copyright: "© 2024 WebAI. All rights reserved."
+    title: "Sende Youhu (Beijing) Technology Co., Ltd",
+    subtitle: "Professional Environmental Disinfection Service Provider",
+    contact_info: "Contact Information",
+    phone: "Phone: 13911874044 (Yanxi)",
+    email: "Email: 476341210{'@'}qq.com",
+    copyright: "© 2024 Sende Youhu (Beijing) Technology Co., Ltd. All rights reserved."
   },
   apiDocs: {
     title: "API Documentation",
