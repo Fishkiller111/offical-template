@@ -20,6 +20,8 @@ export default defineNuxtConfig({
     // 服务器端运行时配置（仅在服务器端可用）
     serverPort: process.env.NUXT_PORT || '3000',
     serverHost: process.env.NUXT_HOST || '0.0.0.0',
+    difyApiKey: process.env.DIFY_API_KEY,
+    difyBaseUrl: process.env.DIFY_BASE_URL,
     // 公共配置（暴露给客户端）
     public: {
       apiBase: process.env.API_BASE_URL || '/api'

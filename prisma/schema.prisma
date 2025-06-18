@@ -10,17 +10,45 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            Int           @id @default(autoincrement())
+  email         String        @unique
+  name          String
+  password      String
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  conversations Conversation[]
 
   @@map("users")
+}
+
+model Conversation {
+  id               Int      @id @default(autoincrement())
+  title            String
+  difyConversationId String? // Dify API的conversation_id
+  userId           Int
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages         Message[]
+
+  @@map("conversations")
+}
+
+model Message {
+  id             Int      @id @default(autoincrement())
+  content        String
+  isUser         Boolean
+  conversationId Int
+  files          Json?    // 存储文件信息的JSON
+  createdAt      DateTime @default(now())
+  
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
 }

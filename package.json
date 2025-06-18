@@ -22,7 +22,7 @@
     "@iconify/vue": "^5.0.0",
     "@nuxtjs/i18n": "^9.5.5",
     "@nuxtjs/tailwindcss": "^6.11.4",
-    "@prisma/client": "^6.8.2",
+    "@prisma/client": "6.8.2",
     "@stagewise/toolbar-vue": "^0.4.8",
     "@types/bcryptjs": "^3.0.0",
     "@types/pg": "^8.15.4",
