@@ -44,14 +44,33 @@ import { prisma } from '~/server/utils/db'
 
 export default defineEventHandler(async (event) => {
   try {
+    console.log('🔐 开始登录处理...')
+    
     const body = await readBody(event)
+    console.log('📨 接收到登录请求:', { email: body.email, hasPassword: !!body.password })
+    
     const { email, password } = body
 
     // 验证输入
     if (!email || !password) {
+      console.log('❌ 缺少必要参数')
       throw createError({
         statusCode: 400,
         statusMessage: 'Email and password are required'
+      })
+    }
+
+    console.log('🔍 正在查找用户...')
+    
+    // 测试数据库连接
+    try {
+      await prisma.$connect()
+      console.log('✅ 数据库连接成功')
+    } catch (dbError) {
+      console.error('❌ 数据库连接失败:', dbError)
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Database connection failed'
       })
     }
 
@@ -60,6 +79,8 @@ export default defineEventHandler(async (event) => {
       where: { email }
     })
 
+    console.log('👤 用户查找结果:', user ? `找到用户 ID: ${user.id}` : '用户不存在')
+
     if (!user) {
       throw createError({
         statusCode: 401,
@@ -67,8 +88,12 @@ export default defineEventHandler(async (event) => {
       })
     }
 
+    console.log('🔑 验证密码...')
+    
     // 验证密码
     const isValidPassword = await verifyPassword(password, user.password)
+    console.log('🔐 密码验证结果:', isValidPassword ? '正确' : '错误')
+    
     if (!isValidPassword) {
       throw createError({
         statusCode: 401,
@@ -76,6 +101,8 @@ export default defineEventHandler(async (event) => {
       })
     }
 
+    console.log('🎫 生成JWT token...')
+    
     // 生成JWT token
     const token = generateToken({
       userId: user.id,
@@ -90,6 +117,8 @@ export default defineEventHandler(async (event) => {
       createdAt: user.createdAt
     }
 
+    console.log('✅ 登录成功!')
+
     return {
       success: true,
       message: 'Login successful',
@@ -99,11 +128,16 @@ export default defineEventHandler(async (event) => {
       }
     }
   } catch (error: any) {
+    console.error('❌ 登录错误详情:', {
+      message: error.message,
+      statusCode: error.statusCode,
+      stack: error.stack
+    })
+    
     if (error.statusCode) {
       throw error
     }
     
-    console.error('Login error:', error)
     throw createError({
       statusCode: 500,
       statusMessage: 'Internal server error'
