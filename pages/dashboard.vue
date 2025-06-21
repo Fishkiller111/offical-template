@@ -309,7 +309,19 @@
                 </div>
                 
                 <p class="text-sm lg:text-base whitespace-pre-wrap">{{ message.content }}</p>
-                <span class="text-xs opacity-70 mt-2 block">{{ message.time }}</span>
+                
+                <!-- AI回复的语音播放功能 -->
+                <div v-if="!message.isUser && message.content" class="flex items-center justify-between mt-2">
+                  <span class="text-xs opacity-70">{{ message.time }}</span>
+                  <VoicePlayer 
+                    :text="message.content"
+                    :messageId="message.id"
+                    class="ml-2"
+                  />
+                </div>
+                
+                <!-- 用户消息只显示时间 -->
+                <span v-else class="text-xs opacity-70 mt-2 block">{{ message.time }}</span>
               </div>
             </div>
 
@@ -341,6 +353,11 @@
                 accept="image/*"
                 class="hidden"
               >
+              <!-- 语音录制组件 -->
+              <VoiceRecorder 
+                @transcriptReceived="handleVoiceTranscript"
+                class="flex-shrink-0"
+              />
               <button 
                 @click="$refs.fileInput.click()"
                 class="btn-secondary px-4 lg:px-6 tech-button will-change-transform gpu-accelerated"
@@ -482,6 +499,11 @@
               accept="image/*"
               class="hidden"
             >
+            <!-- 移动端语音录制组件 -->
+            <VoiceRecorder 
+              @transcriptReceived="handleVoiceTranscript"
+              class="flex-shrink-0"
+            />
             <button 
               @click="$refs.mobileFileInput.click()"
               :disabled="isUploading"
@@ -769,6 +791,8 @@ import {
 import LanguageSwitcher from '~/components/LanguageSwitcher.vue'
 import ThemeSelector from '~/components/ThemeSelector.vue'
 import StreamingIndicator from '~/components/ui/StreamingIndicator.vue'
+import VoiceRecorder from '~/components/ui/VoiceRecorder.vue'
+import VoicePlayer from '~/components/ui/VoicePlayer.vue'
 import { Icon } from '@iconify/vue'
 import { useModal } from '~/composables/useModal'
 
@@ -1100,6 +1124,15 @@ const sendMessage = async () => {
 const sendQuickMessage = (message) => {
   newMessage.value = message
   sendMessage()
+}
+
+// 处理语音转文字结果
+const handleVoiceTranscript = (transcript) => {
+  // 将语音转换的文字填入输入框
+  newMessage.value = transcript
+  
+  // 可选：自动发送消息
+  // sendMessage()
 }
 
 // 页面标题

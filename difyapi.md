@@ -349,9 +349,6 @@ Copy**Copied!**
 }
 </code></pre></pre>
 
-
-
-
 Copy**Copied!**
 
 **GET**/messages
@@ -685,6 +682,80 @@ Copy**Copied!**
   "introduction": "",
   "created_at": 1732731141,
   "updated_at": 1732734510
+}
+</code></pre></pre>
+
+
+**POST**/audio-to-text
+
+## [语音转文字](https://cloud.dify.ai/app/9808165c-bb47-4825-a3f7-36f15a5fce11/develop#audio)
+
+### Request Body
+
+该接口需使用 `multipart/form-data` 进行请求。
+
+* Name `file`TypefileDescription语音文件。 支持格式：`['mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'webm']` 文件大小限制：15MB
+* Name `user`TypestringDescription用户标识，由开发者定义规则，需保证用户标识在应用内唯一。
+
+### Response
+
+* `text` (string) 输出文字
+
+### Request
+
+**POST**
+
+/audio-to-text
+
+```
+curl -X POST 'https://api.dify.ai/v1/audio-to-text' \
+--header 'Authorization: Bearer {api_key}' \
+--form 'file=@localfile;type=audio/[mp3|mp4|mpeg|mpga|m4a|wav|webm]
+```
+
+Copy**Copied!**
+
+### Response
+
+<pre class="overflow-x-auto p-4 text-xs text-white"><pre><code class="language-json">{
+  "text": "hello"
+}
+</code></pre></pre>
+
+Copy**Copied!**
+
+---
+
+**POST**/text-to-audio
+
+## [文字转语音](https://cloud.dify.ai/app/9808165c-bb47-4825-a3f7-36f15a5fce11/develop#audio)
+
+文字转语音。
+
+### Request Body
+
+* Name `message_id`TypestrDescriptionDify 生成的文本消息，那么直接传递生成的message-id 即可，后台会通过 message_id 查找相应的内容直接合成语音信息。如果同时传 message_id 和 text，优先使用 message_id。
+* Name `text`TypestrDescription语音生成内容。如果没有传 message-id的话，则会使用这个字段的内容
+* Name `user`TypestringDescription用户标识，由开发者定义规则，需保证用户标识在应用内唯一。
+
+### Request
+
+**POST**
+
+/text-to-audio
+
+```
+curl --location --request POST 'https://api.dify.ai/v1/text-to-audio' \
+--header 'Authorization: Bearer ENTER-YOUR-SECRET-KEY' \
+--form 'text=你好Dify;user=abc-123;message_id=5ad4cb98-f0c7-4085-b384-88c403be6290
+```
+
+Copy**Copied!**
+
+### headers
+
+<pre class="overflow-x-auto p-4 text-xs text-white"><pre><code class="language-json">{
+  "Content-Type": "audio/wav"
 }
 </code></pre></pre>
 
