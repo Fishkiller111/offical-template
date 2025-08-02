@@ -393,7 +393,7 @@ const sendAudio = async () => {
     const response = await fetch('https://api.dify.ai/v1/audio-to-text', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer app-0QAj1Mm0j17XJMQaTmTa6bzN'
+        'Authorization': 'Bearer app-PpZo5LZtLpt4snU8Hefs8SrN'
       },
       body: formData
     })

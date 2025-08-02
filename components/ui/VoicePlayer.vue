@@ -137,7 +137,7 @@ const generateAudio = async () => {
     const response = await fetch('https://api.dify.ai/v1/text-to-audio', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer app-0QAj1Mm0j17XJMQaTmTa6bzN',
+        'Authorization': 'Bearer app-PpZo5LZtLpt4snU8Hefs8SrN',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(requestBody)

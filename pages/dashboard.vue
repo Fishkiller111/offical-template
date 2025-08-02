@@ -256,25 +256,31 @@
                 <ShieldCheckIcon class="w-5 h-5 text-white" />
               </div>
               <div class="bg-dark-light rounded-lg p-3 lg:p-4 max-w-xs lg:max-w-md">
-                <p class="text-light text-sm lg:text-base">{{ $t('dashboard.chat_welcome') }}</p>
+                <p class="text-light text-sm lg:text-base whitespace-pre-wrap">{{ $t('dashboard.chat_welcome') }}</p>
                 <div class="mt-3 space-y-2">
                   <button 
                     @click="sendQuickMessage($t('dashboard.quick_scan'))"
                     class="block w-full text-left px-3 py-2 bg-dark rounded-md text-xs lg:text-sm text-light hover:bg-dark-lighter tech-button will-change-transform gpu-accelerated"
                   >
-                    🦠 {{ $t('dashboard.quick_scan') }}
+                    {{ $t('dashboard.quick_scan') }}
                   </button>
                   <button 
                     @click="sendQuickMessage($t('dashboard.upload_analysis'))"
                     class="block w-full text-left px-3 py-2 bg-dark rounded-md text-xs lg:text-sm text-light hover:bg-dark-lighter tech-button will-change-transform gpu-accelerated"
                   >
-                    🧪 {{ $t('dashboard.upload_analysis') }}
+                    {{ $t('dashboard.upload_analysis') }}
                   </button>
                   <button 
                     @click="sendQuickMessage($t('dashboard.security_tips'))"
                     class="block w-full text-left px-3 py-2 bg-dark rounded-md text-xs lg:text-sm text-light hover:bg-dark-lighter tech-button will-change-transform gpu-accelerated"
                   >
-                    🧬 {{ $t('dashboard.security_tips') }}
+                    {{ $t('dashboard.security_tips') }}
+                  </button>
+                  <button 
+                    @click="sendQuickMessage($t('dashboard.medical_professional'))"
+                    class="block w-full text-left px-3 py-2 bg-dark rounded-md text-xs lg:text-sm text-light hover:bg-dark-lighter tech-button will-change-transform gpu-accelerated"
+                  >
+                    {{ $t('dashboard.medical_professional') }}
                   </button>
                 </div>
               </div>
@@ -912,7 +918,7 @@ const handleFileUpload = async (event) => {
     const response = await fetch('https://api.dify.ai/v1/files/upload', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer app-0QAj1Mm0j17XJMQaTmTa6bzN',
+        'Authorization': 'Bearer app-PpZo5LZtLpt4snU8Hefs8SrN',
       },
       body: formData
     })
@@ -1003,7 +1009,7 @@ const sendMessage = async () => {
     const response = await fetch('https://api.dify.ai/v1/chat-messages', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer app-0QAj1Mm0j17XJMQaTmTa6bzN',
+        'Authorization': 'Bearer app-PpZo5LZtLpt4snU8Hefs8SrN',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestBody)
@@ -1277,7 +1283,7 @@ const loadConversations = async () => {
     const response = await fetch(`https://api.dify.ai/v1/conversations?${params}`, {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer app-0QAj1Mm0j17XJMQaTmTa6bzN',
+        'Authorization': 'Bearer app-PpZo5LZtLpt4snU8Hefs8SrN',
         'Content-Type': 'application/json',
       }
     })
@@ -1322,7 +1328,7 @@ const loadConversations = async () => {
           const msgResponse = await fetch(`https://api.dify.ai/v1/messages?${msgParams}`, {
             method: 'GET',
             headers: {
-              'Authorization': 'Bearer app-0QAj1Mm0j17XJMQaTmTa6bzN',
+              'Authorization': 'Bearer app-PpZo5LZtLpt4snU8Hefs8SrN',
               'Content-Type': 'application/json',
             }
           })
@@ -1460,7 +1466,7 @@ const loadConversation = async (conversation) => {
     const response = await fetch(`https://api.dify.ai/v1/messages?${params}`, {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer app-0QAj1Mm0j17XJMQaTmTa6bzN',
+        'Authorization': 'Bearer app-PpZo5LZtLpt4snU8Hefs8SrN',
         'Content-Type': 'application/json',
       }
     })
@@ -1544,7 +1550,7 @@ const deleteConversation = async (convId) => {
     const response = await fetch(`https://api.dify.ai/v1/conversations/${convId}`, {
       method: 'DELETE',
       headers: {
-        'Authorization': 'Bearer app-0QAj1Mm0j17XJMQaTmTa6bzN',
+        'Authorization': 'Bearer app-PpZo5LZtLpt4snU8Hefs8SrN',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
