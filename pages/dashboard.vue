@@ -319,11 +319,11 @@
                 <!-- AI回复的语音播放功能 -->
                 <div v-if="!message.isUser && message.content" class="flex items-center justify-between mt-2">
                   <span class="text-xs opacity-70">{{ message.time }}</span>
-                  <VoicePlayer 
+                  <!-- <VoicePlayer 
                     :text="message.content"
                     :messageId="message.id"
                     class="ml-2"
-                  />
+                  /> -->
                 </div>
                 
                 <!-- 用户消息只显示时间 -->
@@ -360,10 +360,10 @@
                 class="hidden"
               >
               <!-- 语音录制组件 -->
-              <VoiceRecorder 
+              <!-- <VoiceRecorder 
                 @transcriptReceived="handleVoiceTranscript"
                 class="flex-shrink-0"
-              />
+              /> -->
               <button 
                 @click="$refs.fileInput.click()"
                 class="btn-secondary px-4 lg:px-6 tech-button will-change-transform gpu-accelerated"
@@ -506,10 +506,10 @@
               class="hidden"
             >
             <!-- 移动端语音录制组件 -->
-            <VoiceRecorder 
+            <!-- <VoiceRecorder 
               @transcriptReceived="handleVoiceTranscript"
               class="flex-shrink-0"
-            />
+            /> -->
             <button 
               @click="$refs.mobileFileInput.click()"
               :disabled="isUploading"
@@ -797,8 +797,8 @@ import {
 import LanguageSwitcher from '~/components/LanguageSwitcher.vue'
 import ThemeSelector from '~/components/ThemeSelector.vue'
 import StreamingIndicator from '~/components/ui/StreamingIndicator.vue'
-import VoiceRecorder from '~/components/ui/VoiceRecorder.vue'
-import VoicePlayer from '~/components/ui/VoicePlayer.vue'
+// import VoiceRecorder from '~/components/ui/VoiceRecorder.vue'
+// import VoicePlayer from '~/components/ui/VoicePlayer.vue'
 import { Icon } from '@iconify/vue'
 import { useModal } from '~/composables/useModal'
 
@@ -1064,6 +1064,10 @@ const sendMessage = async () => {
             } else if (data.event === 'agent_thought') {
               // Agent思考过程，可以显示思考状态
               console.log('Agent思考:', data.thought)
+            } else if (data.event === 'tts_message' || data.event === 'tts_message_end') {
+              // 明确忽略TTS音频事件，禁用自动播放
+              console.log('忽略TTS事件:', data.event)
+              continue
             } else if (data.event === 'message_end') {
               // 保存conversation_id用于后续对话
               if (data.conversation_id) {
@@ -1133,13 +1137,13 @@ const sendQuickMessage = (message) => {
 }
 
 // 处理语音转文字结果
-const handleVoiceTranscript = (transcript) => {
-  // 将语音转换的文字填入输入框
-  newMessage.value = transcript
-  
-  // 可选：自动发送消息
-  // sendMessage()
-}
+// const handleVoiceTranscript = (transcript) => {
+//   // 将语音转换的文字填入输入框
+//   newMessage.value = transcript
+//   
+//   // 可选：自动发送消息
+//   // sendMessage()
+// }
 
 // 页面标题
 useHead({
@@ -2039,4 +2043,4 @@ onMounted(async () => {
     padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
 }
-</style> 
+</style>
