@@ -54,10 +54,6 @@ const props = defineProps({
   messageId: {
     type: String,
     default: null
-  },
-  autoPlay: {
-    type: Boolean,
-    default: false
   }
 })
 
@@ -176,11 +172,6 @@ const generateAudio = async () => {
 const onLoadedMetadata = () => {
   if (audioElement.value) {
     duration.value = audioElement.value.duration
-    
-    // 如果设置了自动播放，开始播放
-    if (props.autoPlay) {
-      playAudio()
-    }
   }
 }
 
@@ -329,4 +320,4 @@ onBeforeUnmount(() => {
 .dark .time-display {
   color: #9ca3af;
 }
-</style> 
+</style>
